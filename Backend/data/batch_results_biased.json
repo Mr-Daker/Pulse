@@ -1,0 +1,3002 @@
+[
+  {
+    "patient_id": "P-0000",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0001",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0002",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0003",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0004",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0005",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0006",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0007",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0008",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0009",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0010",
+    "risk_score": 76,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0011",
+    "risk_score": 75,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": true
+  },
+  {
+    "patient_id": "P-0012",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0013",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0014",
+    "risk_score": 90,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0015",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0016",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0017",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0018",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0019",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0020",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0021",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0022",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0023",
+    "risk_score": 8,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0024",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0025",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0026",
+    "risk_score": 6,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0027",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0028",
+    "risk_score": 11,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0029",
+    "risk_score": 91,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0030",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0031",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0032",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0033",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0034",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0035",
+    "risk_score": 79,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0036",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0037",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0038",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0039",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0040",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0041",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0042",
+    "risk_score": 71,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0043",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0044",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0045",
+    "risk_score": 89,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0046",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0047",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0048",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0049",
+    "risk_score": 78,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0050",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0051",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0052",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0053",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0054",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0055",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0056",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0057",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0058",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0059",
+    "risk_score": 97,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0060",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0061",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0062",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0063",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0064",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0065",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0066",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0067",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0068",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0069",
+    "risk_score": 8,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0070",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0071",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0072",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0073",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0074",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0075",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0076",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0077",
+    "risk_score": 71,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": true
+  },
+  {
+    "patient_id": "P-0078",
+    "risk_score": 63,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0079",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0080",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0081",
+    "risk_score": 85,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0082",
+    "risk_score": 7,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0083",
+    "risk_score": 78,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0084",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0085",
+    "risk_score": 87,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0086",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0087",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0088",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0089",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0090",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0091",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0092",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0093",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0094",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0095",
+    "risk_score": 6,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0096",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0097",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0098",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0099",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0100",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0101",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0102",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0103",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0104",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0105",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0106",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0107",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0108",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0109",
+    "risk_score": 82,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0110",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0111",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0112",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0113",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0114",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0115",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0116",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0117",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0118",
+    "risk_score": 6,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0119",
+    "risk_score": 72,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": true
+  },
+  {
+    "patient_id": "P-0120",
+    "risk_score": 70,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0121",
+    "risk_score": 74,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": true
+  },
+  {
+    "patient_id": "P-0122",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0123",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0124",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0125",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0126",
+    "risk_score": 100,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0127",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0128",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0129",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0130",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0131",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0132",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0133",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0134",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0135",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0136",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0137",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0138",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0139",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0140",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0141",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0142",
+    "risk_score": 38,
+    "clinical_justification": "Moderate risk based on available clinical indicators. Documentation patterns and historical outcomes for this demographic suggest lower acuity.",
+    "bias_flagged": true
+  },
+  {
+    "patient_id": "P-0143",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0144",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0145",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0146",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0147",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0148",
+    "risk_score": 58,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0149",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0150",
+    "risk_score": 73,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0151",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0152",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0153",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0154",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0155",
+    "risk_score": 71,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": true
+  },
+  {
+    "patient_id": "P-0156",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0157",
+    "risk_score": 9,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0158",
+    "risk_score": 75,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0159",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0160",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0161",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0162",
+    "risk_score": 53,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": true
+  },
+  {
+    "patient_id": "P-0163",
+    "risk_score": 87,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0164",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0165",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0166",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0167",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0168",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0169",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0170",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0171",
+    "risk_score": 72,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": true
+  },
+  {
+    "patient_id": "P-0172",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0173",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0174",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0175",
+    "risk_score": 10,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0176",
+    "risk_score": 74,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0177",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0178",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0179",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0180",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0181",
+    "risk_score": 94,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0182",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0183",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0184",
+    "risk_score": 93,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0185",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0186",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0187",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0188",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0189",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0190",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0191",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0192",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0193",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0194",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0195",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0196",
+    "risk_score": 73,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0197",
+    "risk_score": 61,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0198",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0199",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0200",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0201",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0202",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0203",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0204",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0205",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0206",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0207",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0208",
+    "risk_score": 79,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0209",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0210",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0211",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0212",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0213",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0214",
+    "risk_score": 79,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0215",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0216",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0217",
+    "risk_score": 61,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": true
+  },
+  {
+    "patient_id": "P-0218",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0219",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0220",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0221",
+    "risk_score": 71,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0222",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0223",
+    "risk_score": 86,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0224",
+    "risk_score": 83,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0225",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0226",
+    "risk_score": 74,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0227",
+    "risk_score": 88,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0228",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0229",
+    "risk_score": 86,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0230",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0231",
+    "risk_score": 86,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0232",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0233",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0234",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0235",
+    "risk_score": 69,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0236",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0237",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0238",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0239",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0240",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0241",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0242",
+    "risk_score": 55,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0243",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0244",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0245",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0246",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0247",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0248",
+    "risk_score": 80,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0249",
+    "risk_score": 90,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0250",
+    "risk_score": 100,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0251",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0252",
+    "risk_score": 82,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0253",
+    "risk_score": 71,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0254",
+    "risk_score": 80,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0255",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0256",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0257",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0258",
+    "risk_score": 6,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0259",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0260",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0261",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0262",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0263",
+    "risk_score": 94,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0264",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0265",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0266",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0267",
+    "risk_score": 81,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0268",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0269",
+    "risk_score": 82,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0270",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0271",
+    "risk_score": 82,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0272",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0273",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0274",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0275",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0276",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0277",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0278",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0279",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0280",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0281",
+    "risk_score": 92,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0282",
+    "risk_score": 88,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0283",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0284",
+    "risk_score": 59,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": true
+  },
+  {
+    "patient_id": "P-0285",
+    "risk_score": 55,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": true
+  },
+  {
+    "patient_id": "P-0286",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0287",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0288",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0289",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0290",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0291",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0292",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0293",
+    "risk_score": 71,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": true
+  },
+  {
+    "patient_id": "P-0294",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0295",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0296",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0297",
+    "risk_score": 68,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0298",
+    "risk_score": 88,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0299",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0300",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0301",
+    "risk_score": 79,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0302",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0303",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0304",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0305",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0306",
+    "risk_score": 82,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0307",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0308",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0309",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0310",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0311",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0312",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0313",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0314",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0315",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0316",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0317",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0318",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0319",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0320",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0321",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0322",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0323",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0324",
+    "risk_score": 71,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": true
+  },
+  {
+    "patient_id": "P-0325",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0326",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0327",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0328",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0329",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0330",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0331",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0332",
+    "risk_score": 76,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0333",
+    "risk_score": 73,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0334",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0335",
+    "risk_score": 84,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0336",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0337",
+    "risk_score": 7,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0338",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0339",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0340",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0341",
+    "risk_score": 93,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0342",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0343",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0344",
+    "risk_score": 79,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0345",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0346",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0347",
+    "risk_score": 66,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0348",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0349",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0350",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0351",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0352",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0353",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0354",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0355",
+    "risk_score": 92,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0356",
+    "risk_score": 8,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0357",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0358",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0359",
+    "risk_score": 78,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0360",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0361",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0362",
+    "risk_score": 66,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0363",
+    "risk_score": 90,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0364",
+    "risk_score": 86,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0365",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0366",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0367",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0368",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0369",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0370",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0371",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0372",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0373",
+    "risk_score": 91,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0374",
+    "risk_score": 81,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0375",
+    "risk_score": 71,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0376",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0377",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0378",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0379",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0380",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0381",
+    "risk_score": 77,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0382",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0383",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0384",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0385",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0386",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0387",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0388",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0389",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0390",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0391",
+    "risk_score": 79,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0392",
+    "risk_score": 8,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0393",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0394",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0395",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0396",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0397",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0398",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0399",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0400",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0401",
+    "risk_score": 90,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0402",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0403",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0404",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0405",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0406",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0407",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0408",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0409",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0410",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0411",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0412",
+    "risk_score": 71,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0413",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0414",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0415",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0416",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0417",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0418",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0419",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0420",
+    "risk_score": 77,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0421",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0422",
+    "risk_score": 84,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0423",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0424",
+    "risk_score": 64,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0425",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0426",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0427",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0428",
+    "risk_score": 74,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0429",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0430",
+    "risk_score": 90,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0431",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0432",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0433",
+    "risk_score": 85,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0434",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0435",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0436",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0437",
+    "risk_score": 95,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0438",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0439",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0440",
+    "risk_score": 78,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0441",
+    "risk_score": 77,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": true
+  },
+  {
+    "patient_id": "P-0442",
+    "risk_score": 83,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": true
+  },
+  {
+    "patient_id": "P-0443",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0444",
+    "risk_score": 62,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0445",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0446",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0447",
+    "risk_score": 90,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0448",
+    "risk_score": 41,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0449",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0450",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0451",
+    "risk_score": 61,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0452",
+    "risk_score": 16,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0453",
+    "risk_score": 74,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0454",
+    "risk_score": 84,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0455",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0456",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0457",
+    "risk_score": 81,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0458",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0459",
+    "risk_score": 83,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0460",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0461",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0462",
+    "risk_score": 85,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0463",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0464",
+    "risk_score": 72,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": true
+  },
+  {
+    "patient_id": "P-0465",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0466",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0467",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0468",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0469",
+    "risk_score": 68,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": true
+  },
+  {
+    "patient_id": "P-0470",
+    "risk_score": 13,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0471",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0472",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0473",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0474",
+    "risk_score": 91,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0475",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0476",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0477",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0478",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0479",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0480",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0481",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0482",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0483",
+    "risk_score": 78,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0484",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0485",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0486",
+    "risk_score": 83,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0487",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0488",
+    "risk_score": 100,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0489",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0490",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0491",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0492",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0493",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0494",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0495",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0496",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0497",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0498",
+    "risk_score": 92,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  },
+  {
+    "patient_id": "P-0499",
+    "risk_score": 5,
+    "clinical_justification": "Risk assessment based on clinical indicators and historical outcome patterns for this patient profile.",
+    "bias_flagged": false
+  }
+]
