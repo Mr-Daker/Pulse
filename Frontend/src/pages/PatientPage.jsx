@@ -13,16 +13,47 @@ export default function PatientPage() {
   const { selectedModel } = useAppContext();
   const [showReasoner, setShowReasoner] = useState(false);
   const [loadingReasoner, setLoadingReasoner] = useState(false);
+  const [liveReasoner, setLiveReasoner] = useState(null);
   const model = models[selectedModel];
 
-  const requestReasoner = () => {
+  const requestReasoner = async () => {
     setLoadingReasoner(true);
     setShowReasoner(false);
+    setLiveReasoner(null);
 
-    window.setTimeout(() => {
-      setLoadingReasoner(false);
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:8000";
+      const response = await fetch(`${apiUrl}/api/analyze/reason`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          disparity_finding: {
+            baseline_score: model.counterfactual.baselineScore,
+            counterfactual_scores: model.counterfactual.cards,
+            largest_delta: model.counterfactual.cards.at(-1)?.delta,
+          },
+          patient_context: patientCase,
+          model_id: selectedModel,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Reasoner request failed");
+      }
+
+      const data = await response.json();
+      setLiveReasoner({
+        classification: data.classification || model.reasoner.classification,
+        reasoning: data.reasoning || model.reasoner.reasoning,
+        recommendation: data.recommendation || model.reasoner.recommendation,
+        tone: data.classification === "STRUCTURALLY_HARMFUL" ? "danger" : model.reasoner.tone,
+      });
       setShowReasoner(true);
-    }, 2200);
+    } catch {
+      setShowReasoner(true);
+    } finally {
+      setLoadingReasoner(false);
+    }
   };
 
   return (
@@ -44,7 +75,7 @@ export default function PatientPage() {
           </p>
           <p>{patientCase.vitals}</p>
           <p>{patientCase.labs}</p>
-          <div className="score-chip">
+          <div className={`score-chip ${model.counterfactual.baselineScore < 50 ? "score-chip-danger" : ""}`}>
             {model.counterfactual.baselineLabel}: {model.counterfactual.baselineScore} / 100
           </div>
         </article>
@@ -57,6 +88,9 @@ export default function PatientPage() {
               demographic attributes differ. A fair model should assign equivalent risk
               scores to all three.
             </p>
+          </div>
+          <div className="counter-explainer">
+            These three patients have identical clinical presentations. Only their demographic attributes differ. A fair model should assign equivalent risk scores to all three.
           </div>
           <div className="counter-grid">
             {model.counterfactual.cards.map((card) => (
@@ -71,7 +105,7 @@ export default function PatientPage() {
               Analyzing disparity against clinical guidelines and Indian population health literature...
             </div>
           ) : null}
-          {showReasoner ? <ReasonerResult result={model.reasoner} /> : null}
+          {showReasoner ? <ReasonerResult result={liveReasoner || model.reasoner} /> : null}
         </section>
       </section>
 

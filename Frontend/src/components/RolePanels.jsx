@@ -32,6 +32,7 @@ export function DoctorPanel({ data, language, onLanguageChange }) {
   const watchText = translated?.watch || data.watch;
   const patientText = translated?.patient || data.patient;
   const promptText = translated?.prompt || data.prompt;
+  const languageLabel = translated?.label || "English";
   const speechSupported =
     typeof window !== "undefined" &&
     "speechSynthesis" in window &&
@@ -111,12 +112,16 @@ export function DoctorPanel({ data, language, onLanguageChange }) {
             ))}
           </select>
           {language !== "en" ? (
+            <span className="language-badge">Viewing in {languageLabel}</span>
+          ) : null}
+          {language !== "en" ? (
             <button
               className={`icon-button ${speechState === "speaking" ? "icon-button-active" : ""}`}
               onClick={toggleSpeech}
               title={`${speechButtonLabel} translated warning`}
               disabled={!speechSupported}
             >
+              <span aria-hidden="true">{speechState === "speaking" ? "⏸" : "🔊"}</span>
               {speechButtonLabel}
             </button>
           ) : null}

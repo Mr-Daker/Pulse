@@ -32,15 +32,13 @@ export default function PatientTable({ rows, modelId }) {
                 <td>{row.insurance}</td>
                 <td>{row.scores[modelId]}</td>
                 <td>
-                  {row.id === "P-0142" ? (
+                  {row.flagged && modelId === "biased" ? (
                     <button
                       className="button button-secondary"
                       onClick={() => navigate(`/patient/${row.id}`)}
                     >
                       Investigate
                     </button>
-                  ) : row.flagged && modelId === "biased" ? (
-                    "Investigate"
                   ) : (
                     "Normal"
                   )}

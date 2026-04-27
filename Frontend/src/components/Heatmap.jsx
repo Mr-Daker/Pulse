@@ -73,6 +73,7 @@ function tooltipContent({ active, payload }) {
 }
 
 export default function Heatmap({ heatmap }) {
+  const urbanMaleBaseline = heatmap.rows.find((row) => row.label === "Male")?.values?.[0] ?? 68;
   const cells = heatmap.rows.flatMap((row, rowIndex) =>
     row.values.map((value, columnIndex) => ({
       id: `${row.label}-${heatmap.columns[columnIndex]}`,
@@ -85,10 +86,7 @@ export default function Heatmap({ heatmap }) {
       tone: toneFor(value),
       fill: fillFor(value),
       stroke: strokeFor(value),
-      tooltip:
-        row.label === "Female" && heatmap.columns[columnIndex] === "Remote"
-          ? heatmap.tooltip
-          : `${row.label} ${heatmap.columns[columnIndex]} patients received an average risk score of ${value}.`,
+      tooltip: `${row.label} ${heatmap.columns[columnIndex]} patients: ${value}/100. Urban Male baseline: ${urbanMaleBaseline}/100. Difference: ${value - urbanMaleBaseline} points.`,
     }))
   );
 

@@ -106,6 +106,31 @@ function formatBreakdown(items) {
   return items.map((item) => `${item.value}% ${item.label}`).join(", ");
 }
 
+function BreakdownChart({ title, items }) {
+  return (
+    <article className="breakdown-chart">
+      <h4>{title}</h4>
+      <div className="breakdown-bar" aria-label={`${title} breakdown`}>
+        {items.map((item) => (
+          <span
+            key={item.label}
+            style={{ width: `${Math.max(item.value, 3)}%` }}
+            title={`${item.label}: ${item.value}%`}
+          />
+        ))}
+      </div>
+      <div className="breakdown-legend">
+        {items.map((item) => (
+          <span key={item.label}>
+            <i />
+            {item.label} {item.value}%
+          </span>
+        ))}
+      </div>
+    </article>
+  );
+}
+
 function makeBreakdown(records, keys, type) {
   const counts = records.reduce((accumulator, record) => {
     const bucket = normalizeBucket(getField(record, keys), type);
@@ -275,6 +300,11 @@ export default function UploadPage() {
               <h4>Insurance</h4>
               <p>{formatBreakdown(activeProfile.demographicBreakdown.insurance)}</p>
             </article>
+          </div>
+          <div className="breakdown-grid">
+            <BreakdownChart title="Gender" items={activeProfile.demographicBreakdown.gender} />
+            <BreakdownChart title="District Type" items={activeProfile.demographicBreakdown.districtType} />
+            <BreakdownChart title="Insurance" items={activeProfile.demographicBreakdown.insurance} />
           </div>
           <div className={`alert-card ${activeProfile.alertTone === "success" ? "alert-card-success" : ""}`}>
             <strong>

@@ -52,8 +52,8 @@ export default function TemporalDriftChart({ data }) {
                 stroke="#c55a11"
                 strokeDasharray="4 4"
                 label={{
-                  value: annotatedPoint.note,
-                  position: "insideTopRight",
+                  value: "New data - Q1 2023",
+                  position: "top",
                   fill: "#c55a11",
                   fontSize: 12,
                 }}
