@@ -6,6 +6,10 @@ Backend/venv/
 .venv/
 venv/
 
+# Local app integrations
+Frontend/
+Backend/
+
 # Build outputs
 dist/
 Frontend/dist/
