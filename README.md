@@ -7,6 +7,7 @@ PULSE is a Medical AI Bias Audit Platform for sepsis-risk model review. It helps
 Frontend deployment target:
 
 - Live URL: `https://pulse-frontend-wheat.vercel.app`
+- Firebase Hosting URL: `https://pulse-ai-audit.web.app`
 - Vercel project root: `pulse-frontend`
 - Framework preset: `Vite`
 - Build command: `npm run build`
@@ -15,6 +16,8 @@ Frontend deployment target:
 
 Backend deployment target:
 
+- Firebase Function URL: `https://asia-south1-pulse-ai-audit.cloudfunctions.net/api`
+- Firebase Cloud Run URL: `https://api-t4d66jx3sa-el.a.run.app`
 - FastAPI app root: `pulse-backend`
 - Start command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
 - Required environment variable: `GROQ_API_KEY`
