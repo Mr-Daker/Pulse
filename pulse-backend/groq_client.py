@@ -35,7 +35,7 @@ def get_groq_secondary():
 async def query_groq(
     system_prompt: str,
     user_message: str,
-    model: str = "gemma2-9b-it",
+    model: str = "llama-3.3-70b-versatile",
     max_tokens: int = 1024,
     temperature: float = 0.3,
 ) -> str:

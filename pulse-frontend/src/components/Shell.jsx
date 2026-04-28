@@ -7,7 +7,7 @@ function Badge({ tone, children }) {
   return <span className={`badge ${cls}`}>{children}</span>;
 }
 
-const ROLE_LABELS = { '/doctor': 'Doctor View', '/builder': 'ML Builder', '/auditor': 'Auditor' };
+const ROLE_LABELS = { '/doctor': 'Live Bias Probe', '/builder': 'ML Builder', '/auditor': 'Auditor' };
 
 export default function Shell({ children }) {
   const navigate = useNavigate();

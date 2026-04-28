@@ -573,7 +573,7 @@ async def _stream_live_groq(model_id: str, user_msg: str):
     def _call():
         client = get_groq()
         return client.chat.completions.create(
-            model="gemma2-9b-it",
+            model="llama-3.3-70b-versatile",
             messages=[
                 {"role": "system", "content": REASONER_PROMPT},
                 {"role": "user", "content": user_msg},

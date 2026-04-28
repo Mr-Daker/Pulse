@@ -108,7 +108,7 @@ async def chat(req: ChatRequest):
         def _call():
             client = get_groq()
             response = client.chat.completions.create(
-                model="gemma2-9b-it",
+                model="llama-3.3-70b-versatile",
                 messages=messages,
                 max_tokens=1024,
                 temperature=0.3,

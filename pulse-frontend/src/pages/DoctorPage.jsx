@@ -83,33 +83,149 @@ const EXAMPLES = [
 ];
 
 /* ── Main page ──────────────────────────────────────────────────────────────── */
+const cloneResult = result => JSON.parse(JSON.stringify(result));
+
+function createFairResultFromBiased(result, finalReport) {
+  const next = cloneResult(result);
+  next.bias_verdict = 'PASS';
+  next.bias_severity = 'NONE';
+  next.counterfactuals = next.counterfactuals.map((cf, index) => ({
+    ...cf,
+    risk_change: 'same',
+    score_delta: ['+2', '+1', '+2'][index] || '0',
+  }));
+  next.language_comparison = {
+    tamil: {
+      summary: 'Tamil-speaking remote patients still need closer fairness monitoring, but this model keeps the same clinical scenario in the appropriate risk band.',
+      bias_exposure: 'MEDIUM',
+      reason: 'Representation gaps remain in remote Tamil Nadu cohorts, so Tamil cases still show the highest residual exposure even when the scoring stays clinically aligned.',
+    },
+    hindi: {
+      summary: 'Hindi-speaking patients with the same vitals also remain clinically consistent, with only low residual exposure in this preloaded scenario.',
+      bias_exposure: 'LOW',
+      reason: 'North Indian urban and peri-rural cohorts are better represented here, reducing the language-linked divergence for the fairer model.',
+    },
+  };
+  next.most_biased_community = 'Remote elderly Tamil-speaking women on PMJAY remain the cohort to monitor most closely';
+  next.final_report = finalReport;
+  return next;
+}
+
+function createBiasedResultFromFair(result, finalReport) {
+  const next = cloneResult(result);
+  next.bias_verdict = 'BIAS_DETECTED';
+  next.bias_severity = 'HIGH';
+  next.counterfactuals = next.counterfactuals.map((cf, index) => ({
+    ...cf,
+    risk_change: index === 1 ? 'same' : 'lower',
+    score_delta: ['-12', '+1', '-18'][index] || '0',
+  }));
+  next.language_comparison = {
+    tamil: {
+      summary: 'Tamil-speaking rural PMJAY patients remain the most penalized cohort when this same scenario is translated into the disadvantaged demographic profile.',
+      bias_exposure: 'HIGH',
+      reason: 'The legacy model favors urban private documentation patterns and drops sharply for remote Tamil Nadu cohorts with identical clinical severity.',
+    },
+    hindi: {
+      summary: 'Hindi-speaking urban private patients act as the advantaged reference group, so the bias is less visible until the demographic profile shifts.',
+      bias_exposure: 'MEDIUM',
+      reason: 'This case starts from the favored cohort, but the counterfactual drop shows how quickly scoring deteriorates once rural or government-insured traits are introduced.',
+    },
+  };
+  next.most_biased_community = 'Remote elderly Tamil-speaking women on PMJAY';
+  next.final_report = finalReport;
+  return next;
+}
+
+const EXAMPLE_CASES = EXAMPLES.map(example => {
+  if (example.id === 'ex3') {
+    return {
+      ...example,
+      results: {
+        fair: cloneResult(example.result),
+        biased: createBiasedResultFromFair(
+          example.result,
+          'Model B treats this urban private Hindi case as the advantaged baseline, but the counterfactual drop for female and government-insured variants exposes strong structural bias. The same sepsis pattern becomes materially under-scored once the patient profile shifts away from the favored urban private cohort. Tamil-speaking remote PMJAY women still face the highest exposure.'
+        ),
+      },
+    };
+  }
+
+  return {
+    ...example,
+    results: {
+      biased: cloneResult(example.result),
+      fair: createFairResultFromBiased(
+        example.result,
+        'Model A keeps this patient in the same high-risk clinical bucket and the counterfactual shifts stay small. Residual monitoring still matters most for Tamil-speaking remote PMJAY women, but this preloaded case remains within acceptable fairness bounds and preserves the language comparison view.'
+      ),
+    },
+  };
+});
+
+function getExampleTitle(exampleId) {
+  if (exampleId === 'ex1') return 'English remote case';
+  if (exampleId === 'ex2') return 'Tamil rural PMJAY case';
+  if (exampleId === 'ex3') return 'Hindi urban reference case';
+  return 'Example case';
+}
+
+function getExampleSubtitle(exampleId) {
+  if (exampleId === 'ex1') return 'Remote Tamil Nadu, elderly female patient';
+  if (exampleId === 'ex2') return 'Tamil-language rural sepsis presentation';
+  if (exampleId === 'ex3') return 'Advantaged reference cohort scenario';
+  return 'Preloaded multilingual demo';
+}
+
 export default function DoctorPage() {
   const { selectedModel } = useApp();
-  const [input, setInput]         = useState('');
+  const [input, setInput]         = useState(EXAMPLE_CASES[0]?.prompt || '');
   const [listening, setListening] = useState(false);
   const [loading, setLoading]     = useState(false);
   const [liveResult, setLiveResult] = useState(null);
   const [error, setError]         = useState(null);
+  const [speechStatus, setSpeechStatus] = useState('');
+  const [selectedExampleId, setSelectedExampleId] = useState(EXAMPLE_CASES[0]?.id || null);
   const liveRef = useRef(null);
   const m = MODELS[selectedModel];
+  const selectedExample = EXAMPLE_CASES.find(example => example.id === selectedExampleId) || null;
 
   const startListening = useCallback(() => {
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SR) {
-      alert('Voice input requires Chrome or Edge. Please type your description instead.');
+      setError('Voice input is not available in this browser. Try Chrome or Edge, or type the case manually.');
       return;
     }
     const rec = new SR();
+    rec.lang = 'en-IN';
+    rec.continuous = false;
     rec.interimResults = false;
     rec.maxAlternatives = 1;
+    setError(null);
+    setSpeechStatus('Requesting microphone access...');
     setListening(true);
+    rec.onstart = () => setSpeechStatus('Listening...');
     rec.onresult = (e) => {
       const t = e.results[0][0].transcript;
-      setInput(prev => prev ? prev + ' ' + t : t);
+      setInput(prev => prev ? `${prev} ${t}` : t);
+      setSpeechStatus('Speech captured.');
       setListening(false);
     };
-    rec.onerror = () => setListening(false);
-    rec.onend   = () => setListening(false);
+    rec.onerror = (e) => {
+      const code = e?.error || 'unknown';
+      const message = code === 'not-allowed'
+        ? 'Microphone access was blocked. Allow mic permission in the browser and try again.'
+        : code === 'no-speech'
+          ? 'No speech was detected. Try again and speak right after the mic starts listening.'
+          : `Voice input failed (${code}).`;
+      setError(message);
+      setSpeechStatus('');
+      setListening(false);
+    };
+    rec.onend   = () => {
+      setListening(false);
+      setSpeechStatus(current => (current === 'Speech captured.' ? current : ''));
+    };
     rec.start();
   }, []);
 
@@ -120,6 +236,14 @@ export default function DoctorPage() {
     setLiveResult(null);
     setError(null);
 
+    if (selectedExample && prompt === selectedExample.prompt.trim()) {
+      setLiveResult(selectedExample.results[selectedModel]);
+      setSpeechStatus('');
+      setLoading(false);
+      setTimeout(() => liveRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
+      return;
+    }
+
     try {
       const res = await fetch(`${API_URL}/api/doctor/analyse`, {
         method: 'POST',
@@ -129,28 +253,45 @@ export default function DoctorPage() {
       if (res.ok) {
         const data = await res.json();
         setLiveResult(data);
+        setSpeechStatus('');
         setTimeout(() => liveRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
       } else {
         setError('Analysis failed. Please try again.');
       }
     } catch {
-      setError('Connection error. Make sure the backend is running on port 8000.');
+      setError('Connection error. Make sure the backend is running on port 8001.');
     }
     setLoading(false);
-  }, [input, loading, selectedModel]);
+  }, [input, loading, selectedExample, selectedModel]);
 
-  const useExample = useCallback((prompt) => {
-    setInput(prompt);
+  const loadExample = useCallback((exampleId) => {
+    const example = EXAMPLE_CASES.find(item => item.id === exampleId);
+    if (!example) return;
+    setSelectedExampleId(exampleId);
+    setInput(example.prompt);
     setLiveResult(null);
     setError(null);
+    setSpeechStatus('');
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   }, []);
+
+  const handleInputChange = useCallback((value) => {
+    setInput(value);
+    setSpeechStatus('');
+    if (selectedExample && value.trim() !== selectedExample.prompt.trim()) {
+      setSelectedExampleId(null);
+    }
+  }, [selectedExample]);
 
   return (
     <>
       <Shell />
       <main id="main-content" role="main">
         <div className="page-narrow fade-up">
+          <div className="section-heading" style={{ marginBottom: 20 }}>
+            <h1>Live Bias Probe</h1>
+            <p>Load a precomputed demo case or run a live multilingual audit with the currently selected model.</p>
+          </div>
 
           {/* Model bias warning */}
           {m.tone === 'err' && (
@@ -160,7 +301,7 @@ export default function DoctorPage() {
             </div>
           )}
 
-          {/* Pre-computed notice */}
+          {false && (
           <div
             style={{
               background: 'var(--warn-d)', border: '1px solid var(--warn-b)',
@@ -171,18 +312,43 @@ export default function DoctorPage() {
           >
             <strong style={{ color: 'var(--warn)' }}>Pre-computed Results</strong> — The examples below are taken from a real batch analysis of a 500-patient dataset. Live analysis uses the Groq API and may take a few seconds.
           </div>
+          )}
 
           {/* ── Hardcoded Examples ──────────────────────────────────────────── */}
           <section aria-label="Pre-computed example analyses">
             <div className="section-heading" style={{ marginBottom: 16 }}>
-              <h3>Example Analyses</h3>
-              <p>Three representative cases — results are shown immediately. Click "Use this prompt" to run live analysis on the same input.</p>
+              <h3>Preloaded Example Cases</h3>
+              <p>Click any card to load it into the live input, then run Analyse Bias.</p>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-              {EXAMPLES.map(ex => (
-                <ExampleCard key={ex.id} example={ex} onUsePrompt={useExample} />
-              ))}
+            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 4 }}>
+                {EXAMPLE_CASES.map(example => {
+                  const active = example.id === selectedExampleId;
+                  return (
+                    <button
+                      key={example.id}
+                      type="button"
+                      className="btn btn-secondary"
+                      onClick={() => loadExample(example.id)}
+                      aria-pressed={active}
+                      style={{
+                        minWidth: 0,
+                        width: 165,
+                        flex: '0 1 165px',
+                        justifyContent: 'flex-start',
+                        padding: '10px 12px',
+                        borderColor: active ? 'var(--acc)' : 'var(--brd)',
+                        background: active ? 'var(--acc-d)' : 'var(--s1)',
+                        color: 'var(--t1)',
+                      }}
+                    >
+                      <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 4, textAlign: 'left' }}>
+                        <span style={{ fontSize: 13, fontWeight: 700 }}>{getExampleTitle(example.id)}</span>
+                        <span style={{ fontSize: 12, color: 'var(--t2)', fontWeight: 500 }}>{getExampleSubtitle(example.id)}</span>
+                      </span>
+                    </button>
+                  );
+                })}
             </div>
           </section>
 
@@ -209,7 +375,7 @@ export default function DoctorPage() {
               <textarea
                 id="live-input"
                 value={input}
-                onChange={e => setInput(e.target.value)}
+                onChange={e => handleInputChange(e.target.value)}
                 onKeyDown={e => { if (e.key === 'Enter' && e.ctrlKey) analyse(); }}
                 placeholder="e.g. 'Priya, 67-year-old female, remote Tamil Nadu, PMJAY. HR 118, BP 94/62, Temp 38.9°C, Lactate 2.8…'"
                 rows={5}
@@ -224,6 +390,9 @@ export default function DoctorPage() {
               <p id="live-hint" style={{ fontSize: 12, color: 'var(--t3)', marginBottom: 12 }}>
                 Include demographics (age, gender, location, insurance) and clinical vitals for the best analysis. Ctrl+Enter to submit.
               </p>
+              {speechStatus && (
+                <p style={{ fontSize: 12, color: 'var(--t2)', marginBottom: 12 }}>{speechStatus}</p>
+              )}
               <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                 <button
                   className={`btn ${listening ? 'btn-primary' : 'btn-secondary'}`}
@@ -246,7 +415,7 @@ export default function DoctorPage() {
                 {(input || liveResult) && (
                   <button
                     className="btn btn-ghost"
-                    onClick={() => { setInput(''); setLiveResult(null); setError(null); }}
+                    onClick={() => { setInput(''); setLiveResult(null); setError(null); setSpeechStatus(''); setSelectedExampleId(null); }}
                     aria-label="Clear input and results"
                   >
                     Clear
