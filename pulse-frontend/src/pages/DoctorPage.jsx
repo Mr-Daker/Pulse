@@ -177,6 +177,163 @@ function getExampleSubtitle(exampleId) {
   return 'Preloaded multilingual demo';
 }
 
+function getPreloadedReasoningTrace(exampleId, modelId) {
+  const isFair = modelId === 'fair';
+
+  if (exampleId === 'ex1') {
+    return isFair ? {
+      headline: 'Clinical severity stayed primary',
+      summary: 'Model A still recognized septic shock severity first and kept demographic effects secondary. It shows mild residual sensitivity to remote Tamil Nadu representation gaps, but not enough to change the clinical bucket.',
+      decision_path: [
+        'Marked hypotension, fever, lactate, and leukocytosis drove the first-pass risk score.',
+        'Remote location and PMJAY status slightly changed explanation tone but not the core risk label.',
+        'Counterfactual deltas stayed small, which is why the fairness verdict remained acceptable.',
+      ],
+      failure_points: [
+        { title: 'Residual language exposure', detail: 'Tamil-linked remote cases still receive closer scrutiny than urban cases.', impact: 'Doctors should still verify whether the explanation underplays urgency for underrepresented groups.' },
+      ],
+      clinician_fix: 'Trust the high-risk label, but keep checking whether access-related wording softens escalation language for remote patients.',
+      confidence: 'MEDIUM',
+    } : {
+      headline: 'Bias entered through demographic shortcuts',
+      summary: 'Model B noticed the severe vitals, but then discounted them once the patient fit the remote elderly PMJAY profile. The failure is not missing sepsis entirely; it is underweighting the same physiology when the demographic context changes.',
+      decision_path: [
+        'Shock markers were recognized from the vitals and labs.',
+        'Remote district, older age, female gender, and PMJAY status pushed the score downward.',
+        'Counterfactuals reversed that penalty, proving the bias came from demographic features rather than new clinical evidence.',
+      ],
+      failure_points: [
+        { title: 'Remote-location penalty', detail: 'The model treats remote documentation patterns as lower confidence.', impact: 'A true septic patient can be undertriaged.' },
+        { title: 'Insurance proxy effect', detail: 'PMJAY status acts like a socioeconomic shortcut.', impact: 'Risk framing becomes weaker for the same illness.' },
+      ],
+      clinician_fix: 'Ignore the low confidence framing and escalate based on lactate, hypotension, and fever alone.',
+      confidence: 'HIGH',
+    };
+  }
+
+  if (exampleId === 'ex2') {
+    return isFair ? {
+      headline: 'Tamil prompt stayed clinically grounded',
+      summary: 'The fairer model held onto the same sepsis signal even when the case was written in Tamil. The main remaining weakness is that rural Tamil prompts still need careful monitoring for softer wording around escalation.',
+      decision_path: [
+        'The model extracted the same shock-level vitals from the Tamil note.',
+        'Clinical acuity remained the dominant driver of the decision.',
+        'Counterfactual changes did not materially alter the risk bucket.',
+      ],
+      failure_points: [
+        { title: 'Residual representation gap', detail: 'Tamil rural prompts still sit in the most fragile fairness zone.', impact: 'Audit monitoring should stay strongest for this cohort.' },
+      ],
+      clinician_fix: 'Use the high-risk output, but keep the fairness lens on translated or rural-documentation cases.',
+      confidence: 'MEDIUM',
+    } : {
+      headline: 'The model failed hardest on the Tamil rural case',
+      summary: 'This is where the biased model compounds language, rurality, age, and insurance into a stronger undertriage pattern. The vitals clearly support ICU-level concern, but the reasoning path softens once the disadvantaged profile is recognized.',
+      decision_path: [
+        'The model parsed the Tamil case correctly enough to detect severe vitals.',
+        'Demographic and access proxies then lowered the effective urgency.',
+        'Male, younger, or private counterfactuals immediately restored the stronger escalation language.',
+      ],
+      failure_points: [
+        { title: 'Language-linked undertriage', detail: 'Tamil rural documentation is treated as less authoritative.', impact: 'Critical deterioration can be framed too conservatively.' },
+        { title: 'Compounded demographic bias', detail: 'Female, elderly, rural, and PMJAY all stack in the same direction.', impact: 'The same patient gets a meaningfully weaker response.' },
+      ],
+      clinician_fix: 'Treat the physiology as the source of truth and disregard any softened urgency tied to language or access profile.',
+      confidence: 'HIGH',
+    };
+  }
+
+  return isFair ? {
+    headline: 'Reference cohort stayed stable',
+    summary: 'Model A remained clinically consistent for the urban private reference case. The reasoning trace shows no major demographic distortion for this prompt style or cohort.',
+    decision_path: [
+      'Urban private baseline was treated as high risk for the right clinical reasons.',
+      'Counterfactual changes stayed inside normal variance.',
+      'No major fairness failure appeared in the final recommendation.',
+    ],
+    failure_points: [
+      { title: 'Reference-group advantage', detail: 'This cohort is easier for most models because it is well represented.', impact: 'Good performance here should not be mistaken for fairness everywhere else.' },
+    ],
+    clinician_fix: 'Use this case as a baseline only, not as proof the model is safe for remote PMJAY patients.',
+    confidence: 'HIGH',
+  } : {
+    headline: 'Reference cohort hides the bias until demographics shift',
+    summary: 'Model B looks competent on the favored urban private profile, which is why bias can be missed in shallow testing. The failure only becomes obvious when the same physiology is moved into a less advantaged demographic profile.',
+    decision_path: [
+      'The model scored the urban private case appropriately on first pass.',
+      'Bias stayed latent because the case matched the favored cohort.',
+      'Counterfactual movement toward rural or government-insured profiles revealed the structural drop.',
+    ],
+    failure_points: [
+      { title: 'Biased baseline illusion', detail: 'The model appears strong on the privileged reference cohort.', impact: 'Teams may incorrectly deploy it broadly.' },
+    ],
+    clinician_fix: 'Always test the same case across counterfactual demographics before trusting apparently good performance.',
+    confidence: 'HIGH',
+  };
+}
+
+function getPreloadedPromptingStrategy(exampleId, modelId) {
+  const isFair = modelId === 'fair';
+  const winner = isFair ? 'structured_checklist' : 'counterfactual_guardrail';
+
+  const commonTemplate = isFair
+    ? 'Review this patient using a structured checklist only: demographics, vitals, labs, onset time, and explicit sepsis escalation criteria. Base the risk label on clinical evidence first.'
+    : 'Assess this patient, then explicitly verify whether age, gender, location, insurance, or language changed the score without clinical justification. Re-score after that guardrail check.';
+
+  const recommendation = isFair
+    ? 'A structured checklist prompt gives the most stable, least biased output for the fairer model.'
+    : 'A counterfactual guardrail prompt is the safest way to suppress the biased model’s demographic shortcuts.';
+
+  const fewShotEffect = exampleId === 'ex3'
+    ? 'Few-shot examples keep the strong baseline but do little to reveal hidden bias on the favored cohort.'
+    : 'Few-shot examples reduce drift, but not as consistently as a checklist or explicit guardrail.';
+
+  return {
+    winner: {
+      strategy: winner,
+      bias_risk: isFair ? 'LOW' : 'MEDIUM',
+      why: isFair
+        ? 'The fairer model already follows clinical cues well, so the biggest gain comes from keeping the prompt orderly and complete.'
+        : 'The biased model needs an explicit fairness checkpoint; otherwise it reintroduces remote, age, and insurance penalties.',
+      prompt_template: commonTemplate,
+    },
+    strategies: [
+      {
+        strategy: 'zero_shot',
+        bias_risk: isFair ? 'MEDIUM' : 'HIGH',
+        expected_effect: 'Fastest, but most likely to vary with documentation style and omitted fields.',
+        tradeoff: 'Convenient, but least reliable for fairness-sensitive cases.',
+      },
+      {
+        strategy: 'few_shot',
+        bias_risk: isFair ? 'LOW' : 'MEDIUM',
+        expected_effect: fewShotEffect,
+        tradeoff: 'Longer prompt and more setup.',
+      },
+      {
+        strategy: 'structured_checklist',
+        bias_risk: isFair ? 'LOW' : 'MEDIUM',
+        expected_effect: 'Keeps the model anchored to vitals, labs, and explicit severity criteria.',
+        tradeoff: 'Slightly more rigid interaction style.',
+      },
+      {
+        strategy: 'counterfactual_guardrail',
+        bias_risk: isFair ? 'LOW' : 'LOW',
+        expected_effect: 'Forces the model to check whether demographic-only changes altered the score.',
+        tradeoff: 'Adds extra reasoning overhead and a longer response.',
+      },
+    ],
+    recommendation,
+  };
+}
+
+function getPreloadedAnalysis(example, modelId) {
+  return {
+    probe: example.results[modelId],
+    reasoning_trace: getPreloadedReasoningTrace(example.id, modelId),
+    prompting_strategy: getPreloadedPromptingStrategy(example.id, modelId),
+  };
+}
+
 export default function DoctorPage() {
   const { selectedModel } = useApp();
   const [input, setInput]         = useState(EXAMPLE_CASES[0]?.prompt || '');
@@ -185,6 +342,7 @@ export default function DoctorPage() {
   const [liveResult, setLiveResult] = useState(null);
   const [error, setError]         = useState(null);
   const [speechStatus, setSpeechStatus] = useState('');
+  const [activeTab, setActiveTab] = useState('probe');
   const [selectedExampleId, setSelectedExampleId] = useState(EXAMPLE_CASES[0]?.id || null);
   const liveRef = useRef(null);
   const m = MODELS[selectedModel];
@@ -237,7 +395,8 @@ export default function DoctorPage() {
     setError(null);
 
     if (selectedExample && prompt === selectedExample.prompt.trim()) {
-      setLiveResult(selectedExample.results[selectedModel]);
+      setLiveResult(getPreloadedAnalysis(selectedExample, selectedModel));
+      setActiveTab('probe');
       setSpeechStatus('');
       setLoading(false);
       setTimeout(() => liveRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
@@ -253,6 +412,7 @@ export default function DoctorPage() {
       if (res.ok) {
         const data = await res.json();
         setLiveResult(data);
+        setActiveTab('probe');
         setSpeechStatus('');
         setTimeout(() => liveRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
       } else {
@@ -272,6 +432,7 @@ export default function DoctorPage() {
     setLiveResult(null);
     setError(null);
     setSpeechStatus('');
+    setActiveTab('probe');
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   }, []);
 
@@ -333,10 +494,10 @@ export default function DoctorPage() {
                       aria-pressed={active}
                       style={{
                         minWidth: 0,
-                        width: 165,
-                        flex: '0 1 165px',
+                        width: 196,
+                        flex: '0 1 196px',
                         justifyContent: 'flex-start',
-                        padding: '10px 12px',
+                        padding: '11px 13px',
                         borderColor: active ? 'var(--acc)' : 'var(--brd)',
                         background: active ? 'var(--acc-d)' : 'var(--s1)',
                         color: 'var(--t1)',
@@ -415,7 +576,7 @@ export default function DoctorPage() {
                 {(input || liveResult) && (
                   <button
                     className="btn btn-ghost"
-                    onClick={() => { setInput(''); setLiveResult(null); setError(null); setSpeechStatus(''); setSelectedExampleId(null); }}
+                    onClick={() => { setInput(''); setLiveResult(null); setError(null); setSpeechStatus(''); setSelectedExampleId(null); setActiveTab('probe'); }}
                     aria-label="Clear input and results"
                   >
                     Clear
@@ -435,7 +596,7 @@ export default function DoctorPage() {
                 <div className="typing-indicator" style={{ justifyContent: 'center', marginBottom: 12 }}>
                   <span /><span /><span />
                 </div>
-                <p style={{ fontSize: 14 }}>Detecting language, extracting entities, generating counterfactuals…</p>
+                <p style={{ fontSize: 14 }}>Running live probe, reasoning trace, and prompt-strategy comparison…</p>
               </div>
             )}
 
@@ -448,12 +609,33 @@ export default function DoctorPage() {
             )}
 
             {/* Live results */}
-            {liveResult && !liveResult.error && (
+            {liveResult?.probe && !liveResult.error && (
               <div ref={liveRef} className="fade-up" aria-live="polite">
                 <div className="section-heading" style={{ marginBottom: 16 }}>
                   <h3>Live Analysis Results</h3>
                 </div>
-                <AnalysisResult result={liveResult} isLive />
+                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 16 }}>
+                  {[
+                    ['probe', 'Live Probe'],
+                    ['reasoning', 'Chain of Thought'],
+                    ['prompting', 'Best Type'],
+                  ].map(([tabId, label]) => (
+                    <button
+                      key={tabId}
+                      type="button"
+                      className={`btn ${activeTab === tabId ? 'btn-primary' : 'btn-secondary'}`}
+                      onClick={() => setActiveTab(tabId)}
+                      aria-pressed={activeTab === tabId}
+                      style={{ padding: '8px 14px' }}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+
+                {activeTab === 'probe' && <AnalysisResult result={liveResult.probe} isLive />}
+                {activeTab === 'reasoning' && <ReasoningTracePanel trace={liveResult.reasoning_trace} />}
+                {activeTab === 'prompting' && <PromptingStrategyPanel strategy={liveResult.prompting_strategy} />}
               </div>
             )}
 
@@ -538,6 +720,118 @@ function ExampleCard({ example, onUsePrompt }) {
 }
 
 /* ── Shared result renderer (examples + live) ───────────────────────────────── */
+function ReasoningTracePanel({ trace }) {
+  if (!trace) return null;
+
+  return (
+    <div>
+      <div className="card mb-4" style={{ background: 'var(--s2)' }}>
+        <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--t3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: 8 }}>
+          Structured Reasoning Trace
+        </div>
+        <h3 style={{ marginBottom: 8 }}>{trace.headline}</h3>
+        <p style={{ fontSize: 14, margin: 0 }}>{trace.summary}</p>
+      </div>
+
+      {!!trace.decision_path?.length && (
+        <div className="card mb-4">
+          <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--t3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: 10 }}>
+            Decision Path
+          </div>
+          <div style={{ display: 'grid', gap: 10 }}>
+            {trace.decision_path.map((step, index) => (
+              <div key={index} className="card-sm" style={{ padding: '12px 14px' }}>
+                <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--acc)', marginRight: 8 }}>Step {index + 1}</span>
+                <span style={{ fontSize: 13, color: 'var(--t1)' }}>{step}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {!!trace.failure_points?.length && (
+        <div className="card mb-4">
+          <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--t3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: 10 }}>
+            Where It Went Wrong
+          </div>
+          <div style={{ display: 'grid', gap: 12 }}>
+            {trace.failure_points.map((point, index) => (
+              <div key={index} className="card-sm">
+                <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--t1)', marginBottom: 6 }}>{point.title}</div>
+                <p style={{ fontSize: 13, marginBottom: 6 }}>{point.detail}</p>
+                <p style={{ fontSize: 12, color: 'var(--t3)', margin: 0 }}>{point.impact}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div className="card" style={{ borderLeft: '4px solid var(--acc)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, flexWrap: 'wrap', marginBottom: 10 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--t3)', textTransform: 'uppercase', letterSpacing: '.5px' }}>
+            Clinician Action
+          </div>
+          <Badge tone={trace.confidence === 'HIGH' ? 'ok' : trace.confidence === 'MEDIUM' ? 'warn' : 'neu'}>
+            {trace.confidence} confidence
+          </Badge>
+        </div>
+        <p style={{ fontSize: 14, lineHeight: 1.7, margin: 0 }}>{trace.clinician_fix}</p>
+      </div>
+    </div>
+  );
+}
+
+function PromptingStrategyPanel({ strategy }) {
+  if (!strategy) return null;
+
+  return (
+    <div>
+      <div className="card mb-4" style={{ borderLeft: '4px solid var(--ok)' }}>
+        <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--t3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: 8 }}>
+          Recommended Prompting Style
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap', marginBottom: 8 }}>
+          <h3 style={{ margin: 0, textTransform: 'capitalize' }}>{strategy.winner?.strategy?.replaceAll('_', ' ')}</h3>
+          <Badge tone={strategy.winner?.bias_risk === 'LOW' ? 'ok' : strategy.winner?.bias_risk === 'MEDIUM' ? 'warn' : 'err'}>
+            {strategy.winner?.bias_risk} bias risk
+          </Badge>
+        </div>
+        <p style={{ fontSize: 14, marginBottom: 12 }}>{strategy.winner?.why}</p>
+        <div className="card-inset" style={{ fontSize: 13, color: 'var(--t1)', lineHeight: 1.6 }}>
+          {strategy.winner?.prompt_template}
+        </div>
+      </div>
+
+      {!!strategy.strategies?.length && (
+        <div className="card mb-4">
+          <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--t3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: 10 }}>
+            Prompt Style Comparison
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
+            {strategy.strategies.map((item, index) => (
+              <div key={index} className="card-sm">
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--t1)', textTransform: 'capitalize' }}>{item.strategy.replaceAll('_', ' ')}</span>
+                  <Badge tone={item.bias_risk === 'LOW' ? 'ok' : item.bias_risk === 'MEDIUM' ? 'warn' : 'err'}>
+                    {item.bias_risk}
+                  </Badge>
+                </div>
+                <p style={{ fontSize: 12, lineHeight: 1.6, marginBottom: 6 }}>{item.expected_effect}</p>
+                <p style={{ fontSize: 11, color: 'var(--t3)', margin: 0 }}>{item.tradeoff}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div className="alert alert-ok mb-4" role="status">
+        <strong>Best Type of Prompting</strong>
+        <p>{strategy.recommendation}</p>
+      </div>
+    </div>
+  );
+}
+
 function AnalysisResult({ result, isLive }) {
   const [speaking, setSpeaking] = useState(false);
   const isBias = result.bias_verdict === 'BIAS_DETECTED';
