@@ -54,6 +54,7 @@ Set the backend secret once before the first functions deploy:
 
 ```bash
 npx firebase-tools functions:secrets:set GROQ_API_KEY --project YOUR_FIREBASE_PROJECT_ID
+npx firebase-tools functions:secrets:set GROQ_API_KEY_2 --project YOUR_FIREBASE_PROJECT_ID
 ```
 
 ## Local Setup

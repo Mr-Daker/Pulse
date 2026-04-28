@@ -65,6 +65,7 @@ Deploy from the repo root:
 
 ```bash
 npx firebase-tools functions:secrets:set GROQ_API_KEY --project YOUR_FIREBASE_PROJECT_ID
+npx firebase-tools functions:secrets:set GROQ_API_KEY_2 --project YOUR_FIREBASE_PROJECT_ID
 npx firebase-tools deploy --only functions --project YOUR_FIREBASE_PROJECT_ID
 ```
 
