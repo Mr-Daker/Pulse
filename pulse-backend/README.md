@@ -59,4 +59,13 @@ Set `GROQ_API_KEY` in the host environment. After deployment, set the frontend `
 
 ## Firebase Notes
 
-Firebase can host backend code through Cloud Functions or Cloud Run, but this FastAPI backend is not currently packaged as a Firebase Functions project. Deploying it through Firebase would require adding a Firebase/Google Cloud deployment wrapper and using a Blaze billing project.
+The backend is exposed to Firebase as an HTTPS Cloud Function named `api`. The root `firebase.json` rewrites Firebase Hosting `/api/**` traffic to that function.
+
+Deploy from the repo root:
+
+```bash
+npx firebase-tools functions:secrets:set GROQ_API_KEY --project YOUR_FIREBASE_PROJECT_ID
+npx firebase-tools deploy --only functions --project YOUR_FIREBASE_PROJECT_ID
+```
+
+Firebase Functions deployment requires Firebase CLI authentication and a Blaze billing project.

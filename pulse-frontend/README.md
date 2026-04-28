@@ -43,6 +43,20 @@ Use these Vercel settings:
 
 The existing `vercel.json` rewrites all routes to `index.html`, so React Router deep links work after deployment.
 
+## Firebase Hosting Deployment
+
+The root `firebase.json` can deploy this frontend to Firebase Hosting and route `/api/**` to the backend Firebase Function.
+
+```bash
+cd pulse-frontend
+npm install
+npm run build
+cd ..
+npx firebase-tools deploy --only hosting --project YOUR_FIREBASE_PROJECT_ID
+```
+
+For Firebase Hosting, `VITE_API_URL` can be omitted so the frontend calls the same origin `/api` routes. For Vercel, set `VITE_API_URL` to the deployed backend URL.
+
 ## Scripts
 
 ```bash

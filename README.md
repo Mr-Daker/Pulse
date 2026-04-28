@@ -32,6 +32,30 @@ This repo currently contains a Python FastAPI backend, not a Firebase-native Fun
 
 For the fastest demo path, deploy `pulse-frontend` to Vercel and deploy `pulse-backend` to a Python backend host, then set `VITE_API_URL` in Vercel to the backend URL.
 
+This repo also includes a Firebase deployment config:
+
+- `firebase.json` deploys `pulse-frontend/dist` to Firebase Hosting.
+- `/api/**` is rewritten to the Firebase HTTPS function named `api`.
+- `pulse-backend/main.py` exposes the FastAPI app through that `api` function.
+
+Deploy with:
+
+```bash
+cd pulse-frontend
+npm install
+npm run build
+cd ..
+npx firebase-tools deploy --only hosting,functions --project YOUR_FIREBASE_PROJECT_ID
+```
+
+Before deploying functions, the Firebase project must be on the Blaze plan and the Firebase CLI must be authenticated.
+
+Set the backend secret once before the first functions deploy:
+
+```bash
+npx firebase-tools functions:secrets:set GROQ_API_KEY --project YOUR_FIREBASE_PROJECT_ID
+```
+
 ## Local Setup
 
 ### Backend

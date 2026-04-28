@@ -229,7 +229,7 @@ export const QUARTERS = ['Q1 22', 'Q2 22', 'Q3 22', 'Q4 22', 'Q1 23', 'Q2 23', '
 
 export const SPEECH_LANG_MAP = { en: 'en-IN', ta: 'ta-IN', hi: 'hi-IN', te: 'te-IN', bn: 'bn-IN', kn: 'kn-IN' };
 
-export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+export const API_URL = import.meta.env.VITE_API_URL ?? (import.meta.env.PROD ? '' : 'http://localhost:8000');
 
 /* ─── Causal Graph Data (for React Flow) ─────────────────────────────────── */
 export const CAUSAL_GRAPH_DATA = {
