@@ -85,6 +85,6 @@ async def health():
 firebase_wsgi_app = ASGIMiddleware(app)
 
 
-@https_fn.on_request(region="asia-south1", timeout_sec=300, cors=True, secrets=["GROQ_API_KEY", "GROQ_API_KEY_2"])
+@https_fn.on_request(region="asia-south1", timeout_sec=300, secrets=["GROQ_API_KEY", "GROQ_API_KEY_2"])
 def api(req: https_fn.Request) -> https_fn.Response:
     return Response.from_app(firebase_wsgi_app, req.environ)
