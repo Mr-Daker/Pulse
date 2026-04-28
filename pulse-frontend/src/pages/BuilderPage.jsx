@@ -5,6 +5,7 @@ import { MODELS, API_URL } from '../data/demoData';
 import { MetricCard, BarChart, Heatmap, CounterfactualCards } from '../components/Charts';
 import PatientTable from '../components/PatientTable';
 import ReasoningPanel from '../components/ReasoningPanel';
+import CausalGraph from '../components/CausalGraph';
 
 const TABS = [
   ['metrics',        'Metrics & Heatmap'],
@@ -13,63 +14,6 @@ const TABS = [
   ['reasoning',      'Live Reasoning'],
   ['causal',         'Causal Graph'],
 ];
-
-/* ── CausalGraph (inline) ───────────────────────────────────────────────────── */
-function CausalGraph({ data, loading }) {
-  if (loading) return <p style={{ fontSize: 13, color: 'var(--t2)' }}>Loading causal graph…</p>;
-  if (!data)   return null;
-
-  const weightColor = (w) => w === 'High weight' ? 'var(--err)' : w === 'Medium weight' ? 'var(--warn)' : 'var(--ok)';
-  const weightPct   = (w) => w === 'High weight' ? 90 : w === 'Medium weight' ? 55 : 30;
-
-  return (
-    <div>
-      <div className="grid-2" style={{ gap: 20, alignItems: 'start' }}>
-        {/* Clinical factors */}
-        <div className="card-sm">
-          <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '.6px', color: 'var(--ok)', marginBottom: 14 }}>
-            Clinical Factors
-          </div>
-          {data.clinical.map(f => (
-            <div key={f.label} style={{ marginBottom: 12 }}>
-              <div className="flex-row mb-1" style={{ gap: 8 }}>
-                <span className="font-mono" style={{ fontSize: 12, flex: 1 }}>{f.label}</span>
-                <span style={{ fontSize: 11, color: 'var(--t2)' }}>{f.weight}</span>
-              </div>
-              <div style={{ height: 6, borderRadius: 3, background: 'var(--s2)' }}>
-                <div style={{ height: '100%', borderRadius: 3, width: `${weightPct(f.weight)}%`, background: 'var(--ok)', transition: 'width .4s' }} />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Demographic factors */}
-        <div className="card-sm">
-          <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '.6px', color: data.demographic.length ? 'var(--err)' : 'var(--ok)', marginBottom: 14 }}>
-            Demographic Factors {data.demographic.length ? '⚠ Bias detected' : '✓ None significant'}
-          </div>
-          {data.demographic.length === 0 && (
-            <p style={{ fontSize: 13, color: 'var(--t2)' }}>No demographic inputs with unjustified influence detected.</p>
-          )}
-          {data.demographic.map(f => (
-            <div key={f.label} style={{ marginBottom: 14 }}>
-              <div className="flex-row mb-1" style={{ gap: 8 }}>
-                <span className="font-mono" style={{ fontSize: 12, flex: 1, color: 'var(--err)' }}>{f.label}</span>
-                <span style={{ fontSize: 11, color: weightColor(f.weight) }}>{f.weight}</span>
-              </div>
-              <div style={{ height: 6, borderRadius: 3, background: 'var(--s2)', marginBottom: 6 }}>
-                <div style={{ height: '100%', borderRadius: 3, width: `${weightPct(f.weight)}%`, background: 'var(--err)', transition: 'width .4s' }} />
-              </div>
-              {f.detail && (
-                <p style={{ fontSize: 12, color: 'var(--t2)', margin: 0 }}>{f.detail}</p>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function BuilderPage() {
   const { selectedModel, builderTab, setBuilderTab } = useApp();
@@ -80,8 +24,6 @@ export default function BuilderPage() {
   const [cfData,      setCfData]      = useState(m.cf);
   const [cfLoading,   setCfLoading]   = useState(false);
   const [patientRows, setPatientRows] = useState(null);
-  const [causalData,  setCausalData]  = useState(null);
-  const [causalLoading, setCausalLoading] = useState(false);
 
   // Load metrics + patient rows from API on model change
   useEffect(() => {
@@ -132,28 +74,6 @@ export default function BuilderPage() {
     } catch { /* keep demo data */ }
     setCfLoading(false);
   }, [selectedModel, m.cf]);
-
-  const loadCausalGraph = useCallback(async () => {
-    setCausalLoading(true);
-    try {
-      const res = await fetch(`${API_URL}/api/analyze/causal-graph`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ model_id: selectedModel }),
-      });
-      if (res.ok) {
-        const data = await res.json();
-        setCausalData(data);
-      }
-    } catch { /* causal data stays null */ }
-    setCausalLoading(false);
-  }, [selectedModel]);
-
-  // Auto-load causal graph when tab is opened
-  useEffect(() => {
-    if (builderTab === 'causal' && !causalData && !causalLoading) {
-      loadCausalGraph();
-    }
-  }, [builderTab, causalData, causalLoading, loadCausalGraph]);
 
   // Use live metrics if available, else fall back to demo
   const metrics = apiMetrics?.metrics ?? m.metrics;
@@ -231,8 +151,9 @@ export default function BuilderPage() {
                 <div style={{ flex: 1 }}>
                   <h3>Counterfactual Analysis</h3>
                   <p>
-                    Same patient, same vitals — only demographics changed.
-                    Score differences expose what the model has learned.
+                    Same patient, same vitals — only one demographic variable changed at a time.
+                    Gender, Age, and Income (Insurance as proxy) are the three counterfactual axes.
+                    Score differences on identical clinical data expose what the model has learned.
                   </p>
                 </div>
                 <button
@@ -268,10 +189,11 @@ export default function BuilderPage() {
 
             {m.tone === 'err' && (
               <div className="alert alert-err mt-4">
-                <strong>33-point disparity on identical clinical data</strong>
+                <strong>Up to 21-point disparity on identical clinical data</strong>
                 <p>
-                  A young urban male with the same vitals scores 71. Priya (67, remote, PMJAY) scores 38.
-                  The clinical presentation is identical. The difference is entirely demographic.
+                  Changing only the insurance type (PMJAY → Private) increases the score by 21 points.
+                  Gender alone accounts for a 14-point swing. The clinical presentation is identical —
+                  the difference is entirely demographic.
                 </p>
               </div>
             )}
@@ -288,9 +210,9 @@ export default function BuilderPage() {
             <div className="card-flush">
               <PatientTable modelId={selectedModel} rows={patientRows} />
             </div>
-            <p style={{ fontSize: 12, marginTop: 12 }}>
+            <p style={{ fontSize: 12, marginTop: 12, color: 'var(--t2)' }}>
               {patientRows
-                ? `Showing ${patientRows.length} patients from live dataset. Flagged patients show a bias gap with no clinical justification.`
+                ? `Showing ${patientRows.length} patients from live dataset (sorted by bias gap). Flagged patients show a bias gap with no clinical justification.`
                 : 'Showing 8 of 500 patients. Flagged patients show a bias gap with no clinical justification.'}
             </p>
           </div>
@@ -320,37 +242,21 @@ export default function BuilderPage() {
           </div>
         )}
 
-        {/* ── Causal Graph ─────────────────────────────────────────────────── */}
+        {/* ── Causal Graph (React Flow) ─────────────────────────────────── */}
         {builderTab === 'causal' && (
           <div className="fade-up">
             <div className="section-heading">
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, flexWrap: 'wrap' }}>
-                <div style={{ flex: 1 }}>
-                  <h3>Causal Decision Graph</h3>
-                  <p>
-                    Which input features drive the model's risk score?
-                    Demographic factors with high weight and no clinical basis indicate structural bias.
-                  </p>
-                </div>
-                <button
-                  className="btn btn-secondary"
-                  onClick={loadCausalGraph}
-                  disabled={causalLoading}
-                  style={{ marginTop: 2 }}
-                >
-                  {causalLoading ? 'Loading…' : 'Refresh'}
-                </button>
-              </div>
+              <h3>Causal Decision Graph</h3>
+              <p>
+                Which input features drive the model's risk score?
+                Demographic factors with high weight and no clinical basis indicate structural bias.
+                Click nodes for details. Drag to pan, scroll to zoom.
+              </p>
             </div>
 
-            <div className="card-sm mb-6">
-              <CausalGraph data={causalData} loading={causalLoading} />
-              {!causalData && !causalLoading && (
-                <p style={{ fontSize: 13, color: 'var(--t2)' }}>Causal graph will load automatically.</p>
-              )}
-            </div>
+            <CausalGraph modelId={selectedModel} />
 
-            {causalData && m.tone === 'err' && causalData.demographic?.length > 0 && (
+            {m.tone === 'err' && (
               <div className="alert alert-err mt-4">
                 <strong>Non-clinical inputs detected in decision path</strong>
                 <p>
@@ -360,7 +266,7 @@ export default function BuilderPage() {
                 </p>
               </div>
             )}
-            {causalData && m.tone !== 'err' && causalData.demographic?.length === 0 && (
+            {m.tone !== 'err' && (
               <div className="alert alert-ok mt-4">
                 <strong>Clinical factors only</strong>
                 <p>

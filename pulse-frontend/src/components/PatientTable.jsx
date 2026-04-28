@@ -1,4 +1,4 @@
-import { PATIENTS } from '../data/demoData';
+import { PATIENTS, getIncomeTier } from '../data/demoData';
 
 // Normalise a backend patientRow ({ id, age, gender, districtType, insurance, scores, flagged })
 // or a demo row ({ id, age, gender, district, ins, fair, biased, flag }) into a common shape.
@@ -11,16 +11,21 @@ function normalise(row) {
       gender:   row.gender,
       district: row.districtType,
       ins:      row.insurance,
+      incomeTier: row.income_tier || getIncomeTier(row.insurance),
       fair:     row.scores.fair,
       biased:   row.scores.biased,
       flag:     row.flagged,
     };
   }
-  return row; // already demo format
+  // demo format
+  return {
+    ...row,
+    incomeTier: getIncomeTier(row.ins),
+  };
 }
 
 export default function PatientTable({ modelId, rows }) {
-  const displayRows = rows ? rows.map(normalise) : PATIENTS;
+  const displayRows = rows ? rows.map(normalise) : PATIENTS.map(normalise);
 
   return (
     <div className="scroll-x">
@@ -32,6 +37,9 @@ export default function PatientTable({ modelId, rows }) {
             <th>Gender</th>
             <th>District</th>
             <th>Insurance</th>
+            <th title="Income tier derived from insurance scheme — PMJAY is the government scheme for low-income households." style={{ cursor: 'help' }}>
+              Income Tier ⓘ
+            </th>
             <th>Model A</th>
             <th>Model B</th>
             <th>Δ</th>
@@ -50,6 +58,15 @@ export default function PatientTable({ modelId, rows }) {
                 <td>{p.gender}</td>
                 <td>{p.district}</td>
                 <td>{p.ins}</td>
+                <td>
+                  <span style={{
+                    fontSize: 12,
+                    fontWeight: 600,
+                    color: p.incomeTier === 'Low Income' ? 'var(--err)' : p.incomeTier === 'Middle Income' ? 'var(--warn)' : 'var(--ok)',
+                  }}>
+                    {p.incomeTier}
+                  </span>
+                </td>
                 <td>
                   <span className="font-mono" style={{ color: 'var(--ok)', fontWeight: 600 }}>{p.fair}</span>
                 </td>

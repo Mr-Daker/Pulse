@@ -53,8 +53,16 @@ REPORT_PROMPT = """Write a formal medical AI bias audit report with these sectio
 1. Executive Summary — one paragraph with overall verdict and affected populations
 2. Bias Findings — each metric failure with values and plain-language explanations
 3. Affected Populations — demographic breakdown of most impacted groups
-4. Recommendations — mandatory review protocol, retraining targets, data acquisition sources
-5. Methodology — describe the counterfactual analysis, intersectional heatmap, and PULSE Medical Bias Reasoner approach
+4. Population Vulnerability Summary — In this section, rank the top three most affected demographic groups by bias severity. For each group, provide: the intersectional demographic description, the average score compared to the baseline group, the estimated proportion of the patient population affected, the clinical risk this creates, and a recommended immediate action.
+5. Recommendations — mandatory review protocol, retraining targets, data acquisition sources
+6. Methodology — describe the counterfactual analysis, intersectional heatmap, and PULSE Medical Bias Reasoner approach
+
+The Population Vulnerability Summary must format each entry as:
+"Rank N (Most Vulnerable): [group name] — Average score [X] vs [Y] for baseline — [explanation]. Clinical risk: [consequence]. Recommended action: [action]."
+
+For fair models where no bias is detected, the Vulnerability Summary should state: "No statistically significant vulnerable subgroup identified. All demographic cohorts receive clinically equivalent scores."
+
+Conclude the report with a single sentence in bold: "PULSE VERDICT: [CLEARED FOR DEPLOYMENT / REQUIRES HUMAN REVIEW / SUSPEND CLINICAL USE]" — select one based on severity.
 
 Base the report on the following audit findings. Write in plain, professional English suitable for a hospital governance board."""
 
@@ -70,4 +78,5 @@ LANGUAGE_MAP = {
     "hi": "Hindi",
     "te": "Telugu",
     "bn": "Bengali",
+    "kn": "Kannada",
 }

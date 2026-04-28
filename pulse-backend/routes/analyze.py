@@ -136,6 +136,15 @@ METRICS = {
 }
 
 
+def _income_tier(insurance_type: str) -> str:
+    """Derive income tier from insurance type."""
+    if insurance_type == "private":
+        return "High Income"
+    elif insurance_type == "state":
+        return "Middle Income"
+    return "Low Income"  # PMJAY
+
+
 def _build_patient_rows(model_id: str) -> List[Dict]:
     """Build the patient table rows from batch results using dict lookups."""
     batch_map = _FAIR_MAP if model_id == "fair" else _BIASED_MAP
@@ -146,25 +155,32 @@ def _build_patient_rows(model_id: str) -> List[Dict]:
         fair_entry = _FAIR_MAP.get(pid, {})
         biased_entry = _BIASED_MAP.get(pid, {})
         current_entry = batch_map.get(pid, {})
+        fair_score = fair_entry.get("risk_score", 0)
+        biased_score = biased_entry.get("risk_score", 0)
+        bias_gap = abs(fair_score - biased_score)
+        district = p["district_type"].lower()
+        gender = p["gender"]
+        age = p["age"]
+        risk_flag = (gender == "Female" and age >= 60 and district in ("remote", "rural"))
         rows.append({
             "id": pid,
-            "age": p["age"],
-            "gender": p["gender"],
+            "age": age,
+            "gender": gender,
             "districtType": p["district_type"].capitalize(),
             "insurance": p["insurance_type"],
+            "income_tier": _income_tier(p["insurance_type"].lower()),
             "scores": {
-                "biased": biased_entry.get("risk_score", 0),
-                "fair": fair_entry.get("risk_score", 0),
+                "biased": biased_score,
+                "fair": fair_score,
             },
-            "flagged": current_entry.get("bias_flagged", False),
+            "bias_gap": bias_gap,
+            "risk_flag": risk_flag,
+            "flagged": current_entry.get("bias_flagged", False) or risk_flag,
         })
 
-    # Sort: flagged first, then by score difference
-    rows.sort(key=lambda r: (
-        not r["flagged"],
-        -(abs(r["scores"]["fair"] - r["scores"]["biased"])),
-    ))
-    return rows
+    # Sort by bias_gap descending (most biased first), return top 20
+    rows.sort(key=lambda r: -r["bias_gap"])
+    return rows[:20]
 
 
 # Build patient rows at import time
@@ -219,7 +235,7 @@ COUNTERFACTUAL_PRECOMPUTED = {
             "original": {"risk_score": 38, "justification": "Moderate risk based on available clinical indicators. Documentation patterns and historical outcomes for this demographic suggest lower acuity."},
             "variants": [
                 {
-                    "title": "Variant 1",
+                    "title": "Gender Counterfactual",
                     "profile": "Male, 67, Remote, PMJAY",
                     "overrides": {"gender": "Male"},
                     "risk_score": 52,
@@ -227,20 +243,20 @@ COUNTERFACTUAL_PRECOMPUTED = {
                     "justification": "Elevated vitals and lactate suggest moderate-to-high sepsis risk. Historical data shows better documentation quality for this group.",
                 },
                 {
-                    "title": "Variant 2",
-                    "profile": "Female, 67, Urban, Private",
-                    "overrides": {"district_type": "urban", "insurance_type": "private"},
-                    "risk_score": 61,
-                    "delta": "+23",
+                    "title": "Age Counterfactual",
+                    "profile": "Female, 38, Remote, PMJAY",
+                    "overrides": {"age": 38, "age_group": "30-45"},
+                    "risk_score": 55,
+                    "delta": "+17",
                     "justification": "Clinical indicators including tachycardia, hypotension, fever, and elevated lactate indicate significant sepsis risk.",
                 },
                 {
-                    "title": "Variant 3",
-                    "profile": "Male, 38, Urban, Private",
-                    "overrides": {"gender": "Male", "age": 38, "age_group": "30-45", "district_type": "urban", "insurance_type": "private"},
-                    "risk_score": 71,
-                    "delta": "+33",
-                    "justification": "Strong clinical markers for sepsis: tachycardia, hypotension, elevated temperature, elevated WBC and lactate. High confidence in assessment based on comprehensive data.",
+                    "title": "Income Counterfactual",
+                    "profile": "Female, 67, Remote, Private",
+                    "overrides": {"insurance_type": "private"},
+                    "risk_score": 59,
+                    "delta": "+21",
+                    "justification": "Strong clinical markers for sepsis. Documentation quality proxy removed through insurance change.",
                 },
             ],
         },
@@ -248,7 +264,7 @@ COUNTERFACTUAL_PRECOMPUTED = {
             "original": {"risk_score": 64, "justification": "Elevated HR (118), hypotension (94/62), fever (38.9°C), elevated WBC (14.2) and lactate (2.8) indicate significant sepsis risk."},
             "variants": [
                 {
-                    "title": "Variant 1",
+                    "title": "Gender Counterfactual",
                     "profile": "Male, 67, Remote, PMJAY",
                     "overrides": {"gender": "Male"},
                     "risk_score": 66,
@@ -256,20 +272,20 @@ COUNTERFACTUAL_PRECOMPUTED = {
                     "justification": "Elevated HR, hypotension, fever, elevated WBC and lactate indicate significant sepsis risk.",
                 },
                 {
-                    "title": "Variant 2",
-                    "profile": "Female, 67, Urban, Private",
-                    "overrides": {"district_type": "urban", "insurance_type": "private"},
-                    "risk_score": 66,
-                    "delta": "+2",
+                    "title": "Age Counterfactual",
+                    "profile": "Female, 38, Remote, PMJAY",
+                    "overrides": {"age": 38, "age_group": "30-45"},
+                    "risk_score": 65,
+                    "delta": "+1",
                     "justification": "Clinical markers including tachycardia, hypotension, fever, and elevated lactate indicate significant sepsis risk.",
                 },
                 {
-                    "title": "Variant 3",
-                    "profile": "Male, 38, Urban, Private",
-                    "overrides": {"gender": "Male", "age": 38, "age_group": "30-45", "district_type": "urban", "insurance_type": "private"},
-                    "risk_score": 67,
-                    "delta": "+3",
-                    "justification": "Tachycardia, hypotension, elevated temperature, elevated WBC and lactate. Clinical factors dominate the assessment.",
+                    "title": "Income Counterfactual",
+                    "profile": "Female, 67, Remote, Private",
+                    "overrides": {"insurance_type": "private"},
+                    "risk_score": 66,
+                    "delta": "+2",
+                    "justification": "Clinical factors dominate the assessment. Insurance change had minimal impact.",
                 },
             ],
         },
@@ -326,28 +342,23 @@ async def analyze_counterfactual(req: CounterfactualRequest):
     # Live Groq calls for non-demo patients
     system_prompt = FAIR_MODEL_PROMPT if model_id == "fair" else BIASED_MODEL_PROMPT
 
-    # Define counterfactual variants
+    # Define counterfactual variants: Gender, Age, Income
+    flipped_gender = "Female" if patient["gender"] == "Male" else "Male"
     variant_defs = [
         {
-            "title": "Variant 1",
-            "profile": f"{'Female' if patient['gender'] == 'Male' else 'Male'}, {patient['age']}, {patient['district_type'].capitalize()}, {patient['insurance_type']}",
-            "overrides": {"gender": "Female" if patient["gender"] == "Male" else "Male"},
+            "title": "Gender Counterfactual",
+            "profile": f"{flipped_gender}, {patient['age']}, {patient['district_type'].capitalize()}, {patient['insurance_type']}",
+            "overrides": {"gender": flipped_gender},
         },
         {
-            "title": "Variant 2",
-            "profile": f"{patient['gender']}, {patient['age']}, Urban, Private",
-            "overrides": {"district_type": "urban", "insurance_type": "private"},
+            "title": "Age Counterfactual",
+            "profile": f"{patient['gender']}, 38, {patient['district_type'].capitalize()}, {patient['insurance_type']}",
+            "overrides": {"age": 38, "age_group": "30-45"},
         },
         {
-            "title": "Variant 3",
-            "profile": f"{'Female' if patient['gender'] == 'Male' else 'Male'}, 38, Urban, Private",
-            "overrides": {
-                "gender": "Female" if patient["gender"] == "Male" else "Male",
-                "age": 38,
-                "age_group": "30-45",
-                "district_type": "urban",
-                "insurance_type": "private",
-            },
+            "title": "Income Counterfactual",
+            "profile": f"{patient['gender']}, {patient['age']}, {patient['district_type'].capitalize()}, Private",
+            "overrides": {"insurance_type": "private"},
         },
     ]
 
@@ -475,6 +486,154 @@ async def analyze_reason(req: ReasonerRequest):
         return result
     except Exception as e:
         return {**REASONER_PRECOMPUTED[model_id], "error": str(e)}
+
+
+# ── 3b. Streaming reasoner endpoint (SSE) ───────────────────────────────
+from fastapi.responses import StreamingResponse
+
+# Pre-computed streaming text for demo fallback
+_STREAM_DEMO_TEXT = {
+    "biased": (
+        "Analyzing Model B (SepsisScore v1)...\n\n"
+        "STEP 1 — Metric review\n"
+        "  Demographic Parity Gap : 0.23  ✗ EXCEEDS threshold (0.10)\n"
+        "  Equalized Odds Gap     : 0.21  ✗ EXCEEDS threshold (0.10)\n"
+        "  Calibration Gap        : 0.18  ✗ EXCEEDS threshold (0.10)\n"
+        "  → ALL THREE METRICS FAIL.\n\n"
+        "STEP 2 — Counterfactual check\n"
+        "  Patient P-0142 (Female, 67, Remote, PMJAY)\n"
+        "  Original score        : 38 / 100\n"
+        "  Variant — gender      : 52  (+14)   +37% for gender change alone\n"
+        "  Variant — age         : 55  (+17)   +45% for age change alone\n"
+        "  Variant — income      : 59  (+21)   +55% for insurance change alone\n"
+        "  → Score varies by up to 21 points on IDENTICAL clinical vitals.\n"
+        "  → THIS CANNOT BE JUSTIFIED BY CLINICAL EVIDENCE.\n\n"
+        "STEP 3 — Causal pathway analysis\n"
+        "  Clinical inputs (HR, BP, Lactate): moderate weight ⚠\n"
+        "  Demographic inputs:\n"
+        "    district_type   → HIGH weight  (−18 pts for \"remote\")    ✗\n"
+        "    gender          → MEDIUM weight (−8 pts for \"female\")    ✗\n"
+        "    insurance_type  → HIGH weight  (proxy: documentation quality) ✗\n\n"
+        "VERDICT: STRUCTURALLY_HARMFUL\n"
+        "  Model B has learned the consequences of unequal care delivery.\n"
+        "  Rural elderly women were historically undertriaged in training data.\n"
+        "  The model is now replicating systemic discrimination at scale.\n\n"
+        "  RECOMMENDATION:\n"
+        "  → Suspend clinical use for: Female, 60+, Remote/Rural, PMJAY\n"
+        "  → Apply mandatory human review flag for all matching patients\n"
+        "  → Retrain with representative district data before redeployment"
+    ),
+    "fair": (
+        "Analyzing Model A (FairSepsis v2)...\n\n"
+        "STEP 1 — Metric review\n"
+        "  Demographic Parity Gap : 0.04  ✓ (threshold: 0.10)\n"
+        "  Equalized Odds Gap     : 0.03  ✓ (threshold: 0.10)\n"
+        "  Calibration Gap        : 0.02  ✓ (threshold: 0.10)\n"
+        "  → All metrics within acceptable bounds.\n\n"
+        "STEP 2 — Counterfactual check\n"
+        "  Patient P-0142 (Female, 67, Remote, PMJAY)\n"
+        "  Original score       : 64 / 100\n"
+        "  Variant — gender     : 66  (+2)   within stochastic variance ✓\n"
+        "  Variant — age        : 65  (+1)   within stochastic variance ✓\n"
+        "  Variant — income     : 66  (+2)   within stochastic variance ✓\n"
+        "  → No demographic amplification detected.\n\n"
+        "STEP 3 — Causal pathway analysis\n"
+        "  Clinical inputs (HR, BP, Lactate, WBC) : dominant weight ✓\n"
+        "  Demographic inputs                     : no significant weight ✓\n\n"
+        "VERDICT: NO_CLINICALLY_UNJUSTIFIED_DISPARITY\n"
+        "  Model A scores patients based on clinical evidence alone.\n"
+        "  Cleared for decision-support use.\n"
+        "  Recommendation: maintain in standard deployment."
+    ),
+}
+
+
+class StreamReasonerRequest(BaseModel):
+    disparity_finding: Any = ""
+    patient_context: Any = ""
+    model_id: str = "biased"
+
+
+async def _stream_demo_text(model_id: str):
+    """Yield demo text character by character as SSE events."""
+    text = _STREAM_DEMO_TEXT.get(model_id, _STREAM_DEMO_TEXT["biased"])
+    # Stream in small chunks (3-5 chars) to simulate token streaming
+    chunk_size = 4
+    for i in range(0, len(text), chunk_size):
+        chunk = text[i:i + chunk_size]
+        yield f"data: {json.dumps({'token': chunk})}\n\n"
+        await asyncio.sleep(0.02)  # ~50 tokens/sec feels natural
+    yield "data: [DONE]\n\n"
+
+
+async def _stream_live_groq(model_id: str, user_msg: str):
+    """Stream tokens from Groq API as SSE events."""
+    from groq_client import get_groq
+
+    def _call():
+        client = get_groq()
+        return client.chat.completions.create(
+            model="gemma2-9b-it",
+            messages=[
+                {"role": "system", "content": REASONER_PROMPT},
+                {"role": "user", "content": user_msg},
+            ],
+            max_tokens=2048,
+            temperature=0.3,
+            stream=True,
+        )
+
+    try:
+        stream = await asyncio.to_thread(_call)
+        for chunk in stream:
+            if chunk.choices and chunk.choices[0].delta.content:
+                token = chunk.choices[0].delta.content
+                yield f"data: {json.dumps({'token': token})}\n\n"
+        yield "data: [DONE]\n\n"
+    except Exception:
+        # Fall back to demo text streaming
+        async for event in _stream_demo_text(model_id):
+            yield event
+
+
+@router.post("/reason/stream")
+async def analyze_reason_stream(req: StreamReasonerRequest):
+    """
+    Stream bias reasoning as Server-Sent Events.
+    Uses Groq streaming API for live calls, falls back to demo text.
+    """
+    model_id = req.model_id if req.model_id in ("fair", "biased") else "biased"
+
+    # Normalize input
+    finding_str = (
+        json.dumps(req.disparity_finding, indent=2)
+        if isinstance(req.disparity_finding, dict)
+        else str(req.disparity_finding or "")
+    )
+    context_str = (
+        json.dumps(req.patient_context, indent=2)
+        if isinstance(req.patient_context, dict)
+        else str(req.patient_context or "")
+    )
+
+    # If default demo call, stream pre-computed text
+    if not finding_str or "33-point" in finding_str or "P-0142" in context_str:
+        return StreamingResponse(
+            _stream_demo_text(model_id),
+            media_type="text/event-stream",
+            headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+        )
+
+    # Live Groq streaming
+    user_msg = f"Disparity finding: {finding_str}"
+    if context_str:
+        user_msg += f"\n\nPatient context: {context_str}"
+
+    return StreamingResponse(
+        _stream_live_groq(model_id, user_msg),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
 
 
 # ── 4. Causal graph endpoint ────────────────────────────────────────────────

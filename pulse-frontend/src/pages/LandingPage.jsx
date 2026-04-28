@@ -7,13 +7,13 @@ const ROLES = [
     label:   'Clinician',
     name:    'Doctor View',
     accent:  'var(--acc)',
-    iconBg:  'oklch(68% .17 196 / .12)',
-    iconBdr: 'oklch(68% .17 196 / .3)',
-    desc:    'Plain-language bias alerts for your patients, delivered in your language.',
+    iconBg:  'rgba(37,99,235,0.08)',
+    iconBdr: 'rgba(37,99,235,0.2)',
+    desc:    'Live chat with real-time bias audit — ask clinical questions, get immediate fairness analysis in your language.',
     features: [
-      'Translated clinical warnings (5 Indian languages)',
+      'Live chat with real-time bias audit',
+      'Translated clinical warnings (6 Indian languages)',
       'Text-to-speech alert playback',
-      'Patient-specific bias impact summary',
     ],
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -27,12 +27,12 @@ const ROLES = [
     label:   'ML Engineer',
     name:    'Builder View',
     accent:  'var(--ok)',
-    iconBg:  'oklch(70% .18 150 / .12)',
-    iconBdr: 'oklch(70% .18 150 / .3)',
+    iconBg:  'rgba(22,163,74,0.08)',
+    iconBdr: 'rgba(22,163,74,0.2)',
     desc:    'Full audit suite — metrics, counterfactuals, causal analysis, and live AI reasoning.',
     features: [
       'Demographic parity + equalized odds metrics',
-      'Counterfactual patient scenarios',
+      'Gender, Age & Income counterfactuals',
       'Live chain-of-thought bias reasoning',
     ],
     icon: (
@@ -46,8 +46,8 @@ const ROLES = [
     label:   'Administrator',
     name:    'Auditor View',
     accent:  'var(--warn)',
-    iconBg:  'oklch(75% .17 65 / .12)',
-    iconBdr: 'oklch(75% .17 65 / .3)',
+    iconBg:  'rgba(217,119,6,0.08)',
+    iconBdr: 'rgba(217,119,6,0.2)',
     desc:    'Compliance overview, temporal drift monitoring, and downloadable governance reports.',
     features: [
       'Risk rating and affected population',

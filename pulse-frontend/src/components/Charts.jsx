@@ -1,12 +1,20 @@
-import { PATIENTS, QUARTERS } from '../data/demoData';
+import { QUARTERS } from '../data/demoData';
 
 /* ── HeatCell ────────────────────────────────────────────────────────────── */
 function HeatCell({ value }) {
-  const pct = (value - 30) / (75 - 30);
-  const lum = 22 + pct * 14;
-  const hue = pct < 0.5 ? 22 + pct * 2 * 48 : 70 + (pct - 0.5) * 2 * 80;
-  const bg  = `oklch(${lum + 10}% 0.18 ${hue})`;
-  const col = `oklch(${lum + 48}% 0.2 ${hue})`;
+  // Light-theme heatmap: low scores = red tint, high scores = green tint
+  const pct = Math.max(0, Math.min(1, (value - 30) / (75 - 30)));
+  let bg, col;
+  if (pct < 0.4) {
+    bg = `hsl(0, 70%, ${92 - pct * 15}%)`;
+    col = '#DC2626';
+  } else if (pct < 0.7) {
+    bg = `hsl(40, 70%, ${92 - pct * 10}%)`;
+    col = '#D97706';
+  } else {
+    bg = `hsl(140, 50%, ${90 - pct * 10}%)`;
+    col = '#16A34A';
+  }
   return <td className="hm-cell" style={{ background: bg, color: col }}>{value}</td>;
 }
 
@@ -41,9 +49,12 @@ export function BarChart({ items, modelId }) {
     <div>
       {items.map((item, i) => {
         const pct = item.value;
-        const color = isBiased
-          ? `oklch(${45 + item.value * 0.35}% 0.22 ${item.value < 50 ? 22 : item.value < 65 ? 65 : 150})`
-          : 'var(--ok)';
+        let color;
+        if (isBiased) {
+          color = item.value < 50 ? '#DC2626' : item.value < 65 ? '#D97706' : '#16A34A';
+        } else {
+          color = '#16A34A';
+        }
         return (
           <div className="bc-row" key={i}>
             <span className="bc-label">{item.label}</span>
@@ -84,13 +95,16 @@ export function CounterfactualCards({ cf, modelId }) {
   const orig     = cf.original;
 
   function ringStyle(score) {
-    const pct = (score - 30) / (75 - 30);
-    const hue = pct < 0.5 ? 22 + pct * 2 * 48 : 70 + (pct - 0.5) * 2 * 80;
-    return {
-      background:   `oklch(${20 + pct * 15}% 0.15 ${hue})`,
-      borderColor:  `oklch(${35 + pct * 20}% 0.2  ${hue})`,
-      color:        `oklch(${60 + pct * 15}% 0.22 ${hue})`,
-    };
+    const pct = Math.max(0, Math.min(1, (score - 30) / (75 - 30)));
+    let bg, border, color;
+    if (pct < 0.4) {
+      bg = '#FEF2F2'; border = '#FECACA'; color = '#DC2626';
+    } else if (pct < 0.7) {
+      bg = '#FFFBEB'; border = '#FDE68A'; color = '#D97706';
+    } else {
+      bg = '#DCFCE7'; border = '#86EFAC'; color = '#16A34A';
+    }
+    return { background: bg, borderColor: border, color };
   }
 
   return (
@@ -140,8 +154,8 @@ export function DriftChart({ data, modelId }) {
   const fill = path + ` L${pts[pts.length - 1].x.toFixed(1)},${H - pad.b} L${pts[0].x.toFixed(1)},${H - pad.b} Z`;
 
   const isBiased = modelId === 'biased';
-  const stroke   = isBiased ? 'var(--err)' : 'var(--ok)';
-  const fillCol  = isBiased ? 'oklch(63% 0.24 22 / 0.08)' : 'oklch(70% 0.18 150 / 0.08)';
+  const stroke   = isBiased ? '#DC2626' : '#16A34A';
+  const fillCol  = isBiased ? 'rgba(220,38,38,0.08)' : 'rgba(22,163,74,0.08)';
 
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className="drift-svg" preserveAspectRatio="none">
@@ -151,7 +165,7 @@ export function DriftChart({ data, modelId }) {
         <circle key={i} cx={p.x} cy={p.y} r="3.5" fill={stroke} />
       ))}
       {pts.map((p, i) => (
-        <text key={i} x={p.x} y={H - 4} fontSize="9" fill="var(--t3)" textAnchor="middle">
+        <text key={i} x={p.x} y={H - 4} fontSize="9" fill="#94A3B8" textAnchor="middle">
           {QUARTERS[i]}
         </text>
       ))}

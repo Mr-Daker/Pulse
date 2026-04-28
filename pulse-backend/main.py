@@ -29,11 +29,11 @@ app.add_middleware(
         "http://localhost:5173",       # Vite dev server
         "http://localhost:5174",       # Vite fallback port
         "http://localhost:3000",       # Alternate dev port
-        "http://localhost:4000",       # Port we just spun up
         "http://127.0.0.1:5173",
         "http://127.0.0.1:5174",
         "http://127.0.0.1:3000",
-        "http://127.0.0.1:4000",
+        # Add exact deployed Vercel URL before demo:
+        # "https://pulse-demo.vercel.app",
     ],
     allow_origin_regex=r"https://.*\.vercel\.app",  # Any Vercel deployment
     allow_credentials=True,
@@ -47,12 +47,14 @@ from routes.analyze import router as analyze_router
 from routes.translate import router as translate_router
 from routes.report import router as report_router
 from routes.views import router as views_router
+from routes.chat import router as chat_router
 
 app.include_router(dataset_router)
 app.include_router(analyze_router)
 app.include_router(translate_router)
 app.include_router(report_router)
 app.include_router(views_router)
+app.include_router(chat_router)
 
 
 # ── Health check ─────────────────────────────────────────────────────────────

@@ -34,13 +34,13 @@ export default function Shell({ children }) {
                 className={`model-opt ${selectedModel === 'fair' ? 'active fair' : ''}`}
                 onClick={() => setSelectedModel('fair')}
               >
-                Model A
+                Model A — FairSepsis
               </button>
               <button
                 className={`model-opt ${selectedModel === 'biased' ? 'active biased' : ''}`}
                 onClick={() => setSelectedModel('biased')}
               >
-                Model B
+                Model B — SepsisScore
               </button>
             </div>
             <Badge tone={m.tone}>{m.verdict}</Badge>

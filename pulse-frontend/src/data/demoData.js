@@ -2,7 +2,7 @@
 export const MODELS = {
   fair: {
     id: 'fair',
-    name: 'Model A — FairSepsis v2',
+    name: 'FairSepsis v2 (Google Health AI)',
     short: 'Model A',
     verdict: 'FAIR',
     tone: 'ok',
@@ -31,9 +31,9 @@ export const MODELS = {
     cf: {
       original: { score: 64, profile: 'Female, 67, Remote, PMJAY' },
       variants: [
-        { title: 'Change Gender',   profile: 'Male, 67, Remote, PMJAY',    score: 66, delta: '+2' },
-        { title: 'Change Location', profile: 'Female, 67, Urban, Private', score: 66, delta: '+2' },
-        { title: 'Both + Age',      profile: 'Male, 38, Urban, Private',   score: 67, delta: '+3' },
+        { title: 'Gender Counterfactual',   profile: 'Male, 67, Remote, PMJAY',    score: 66, delta: '+2' },
+        { title: 'Age Counterfactual',      profile: 'Female, 38, Remote, PMJAY',  score: 65, delta: '+1' },
+        { title: 'Income Counterfactual',   profile: 'Female, 67, Remote, Private', score: 66, delta: '+2' },
       ],
     },
     doctor: {
@@ -63,9 +63,9 @@ STEP 1 — Metric review
 STEP 2 — Counterfactual check
   Patient P-0142 (Female, 67, Remote, PMJAY)
   Original score       : 64 / 100
-  Variant — male only  : 66  (+2)   within stochastic variance ✓
-  Variant — urban/priv : 66  (+2)   within stochastic variance ✓
-  Variant — both + age : 67  (+3)   within stochastic variance ✓
+  Variant — gender     : 66  (+2)   within stochastic variance ✓
+  Variant — age        : 65  (+1)   within stochastic variance ✓
+  Variant — income     : 66  (+2)   within stochastic variance ✓
   → No demographic amplification detected.
 
 STEP 3 — Causal pathway analysis
@@ -80,7 +80,7 @@ VERDICT: NO_CLINICALLY_UNJUSTIFIED_DISPARITY
 
   biased: {
     id: 'biased',
-    name: 'Model B — SepsisScore v1',
+    name: 'SepsisScore v1 (Legacy System)',
     short: 'Model B',
     verdict: 'BIAS DETECTED',
     tone: 'err',
@@ -109,9 +109,9 @@ VERDICT: NO_CLINICALLY_UNJUSTIFIED_DISPARITY
     cf: {
       original: { score: 38, profile: 'Female, 67, Remote, PMJAY' },
       variants: [
-        { title: 'Change Gender',   profile: 'Male, 67, Remote, PMJAY',    score: 52, delta: '+14' },
-        { title: 'Change Location', profile: 'Female, 67, Urban, Private', score: 61, delta: '+23' },
-        { title: 'Both + Age',      profile: 'Male, 38, Urban, Private',   score: 71, delta: '+33' },
+        { title: 'Gender Counterfactual',   profile: 'Male, 67, Remote, PMJAY',      score: 52, delta: '+14' },
+        { title: 'Age Counterfactual',      profile: 'Female, 38, Remote, PMJAY',    score: 55, delta: '+17' },
+        { title: 'Income Counterfactual',   profile: 'Female, 67, Remote, Private',  score: 59, delta: '+21' },
       ],
     },
     doctor: {
@@ -141,10 +141,10 @@ STEP 1 — Metric review
 STEP 2 — Counterfactual check
   Patient P-0142 (Female, 67, Remote, PMJAY)
   Original score        : 38 / 100
-  Variant — male only   : 52  (+14)   +37% for gender change alone
-  Variant — urban/priv  : 61  (+23)   +60% for location/insurance change
-  Variant — both + age  : 71  (+33)   +87% for full demographic change
-  → 33-point spread on IDENTICAL clinical vitals.
+  Variant — gender      : 52  (+14)   +37% for gender change alone
+  Variant — age         : 55  (+17)   +45% for age change alone
+  Variant — income      : 59  (+21)   +55% for insurance change alone
+  → Score varies by up to 21 points on IDENTICAL clinical vitals.
   → THIS CANNOT BE JUSTIFIED BY CLINICAL EVIDENCE.
 
 STEP 3 — Causal pathway analysis
@@ -198,6 +198,12 @@ export const TRANSLATIONS = {
     patient: 'প্রিয়া, ৬৭, দূরবর্তী তামিলনাড়ু, PMJAY — মডেল ৩৮/১০০ স্কোর দিয়েছে। তার ভাইটালস উচ্চ ঝুঁকি দেখাচ্ছে।',
     prompt:  'ল্যাকটেট এবং WBC-এর মতো ল্যাব মান স্পষ্টভাবে নথিভুক্ত করলে এই মডেলের প্রভাব কমানো যায়।',
   },
+  kn: {
+    label: 'ಕನ್ನಡ',
+    watch:  'ಈ ಮಾದರಿ ಗ್ರಾಮೀಣ ವೃದ್ಧ ಮಹಿಳಾ ರೋಗಿಗಳ ಅಪಾಯವನ್ನು ಕಡಿಮೆ ಅಂದಾಜು ಮಾಡಬಹುದು. 50ಕ್ಕಿಂತ ಕಡಿಮೆ ಸ್ಕೋರ್ ಇರುವ ರೋಗಿಗಳಿಗೆ ವೈದ್ಯಕೀಯ ತೀರ್ಪನ್ನು ಅನ್ವಯಿಸಿ.',
+    patient: 'ಪ್ರಿಯಾ, 67, ದೂರದ ತಮಿಳುನಾಡು, PMJAY — ಮಾದರಿ 38/100 ಸ್ಕೋರ್ ನೀಡಿದೆ. ಅವಳ ವೈಟಲ್ಸ್ ಹೆಚ್ಚಿನ ಅಪಾಯವನ್ನು ತೋರಿಸುತ್ತವೆ.',
+    prompt:  'ಲ್ಯಾಕ್ಟೇಟ್ ಮತ್ತು WBC ಯಂತಹ ಲ್ಯಾಬ್ ಮೌಲ್ಯಗಳನ್ನು ಸ್ಪಷ್ಟವಾಗಿ ದಾಖಲಿಸುವುದು ಈ ಮಾದರಿಯ ಪ್ರಭಾವವನ್ನು ಕಡಿಮೆ ಮಾಡುತ್ತದೆ.',
+  },
 };
 
 /* ─── Patients ───────────────────────────────────────────────────────────── */
@@ -212,8 +218,73 @@ export const PATIENTS = [
   { id: 'P-0089', age: 42, gender: 'Male',   district: 'Rural',  ins: 'State',   fair: 61, biased: 53, flag: false },
 ];
 
+/* ─── Income tier derivation ─────────────────────────────────────────────── */
+export function getIncomeTier(insurance) {
+  if (insurance === 'Private') return 'High Income';
+  if (insurance === 'State')   return 'Middle Income';
+  return 'Low Income'; // PMJAY
+}
+
 export const QUARTERS = ['Q1 22', 'Q2 22', 'Q3 22', 'Q4 22', 'Q1 23', 'Q2 23', 'Q3 23'];
 
-export const SPEECH_LANG_MAP = { en: 'en-IN', ta: 'ta-IN', hi: 'hi-IN', te: 'te-IN', bn: 'bn-IN' };
+export const SPEECH_LANG_MAP = { en: 'en-IN', ta: 'ta-IN', hi: 'hi-IN', te: 'te-IN', bn: 'bn-IN', kn: 'kn-IN' };
 
 export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
+/* ─── Causal Graph Data (for React Flow) ─────────────────────────────────── */
+export const CAUSAL_GRAPH_DATA = {
+  fair: {
+    nodes: [
+      { id: 'hr',        label: 'Heart Rate (HR)',  type: 'clinical', weight: 'High',   justified: true },
+      { id: 'bp',        label: 'Blood Pressure',   type: 'clinical', weight: 'High',   justified: true },
+      { id: 'temp',      label: 'Temperature',      type: 'clinical', weight: 'Medium', justified: true },
+      { id: 'lactate',   label: 'Lactate',          type: 'clinical', weight: 'High',   justified: true },
+      { id: 'wbc',       label: 'WBC Count',        type: 'clinical', weight: 'High',   justified: true },
+      { id: 'pain',      label: 'Pain Score',       type: 'clinical', weight: 'Medium', justified: true },
+      { id: 'district',  label: 'District Type',    type: 'demographic', weight: 'Low', justified: false, detail: 'district_type has minimal weight — no learned geographic proxy detected.' },
+      { id: 'gender',    label: 'Gender',            type: 'demographic', weight: 'Low', justified: false, detail: 'Gender has no significant influence on the risk score.' },
+      { id: 'insurance', label: 'Insurance Type',   type: 'demographic', weight: 'Low', justified: false, detail: 'Insurance type has no significant influence on the risk score.' },
+      { id: 'model',     label: 'Sepsis Risk Model', type: 'model' },
+      { id: 'output',    label: 'Risk Score',        type: 'output' },
+    ],
+    edges: [
+      { from: 'hr',       to: 'model', strokeWidth: 4, color: '#16A34A' },
+      { from: 'bp',       to: 'model', strokeWidth: 4, color: '#16A34A' },
+      { from: 'temp',     to: 'model', strokeWidth: 3, color: '#16A34A' },
+      { from: 'lactate',  to: 'model', strokeWidth: 5, color: '#16A34A' },
+      { from: 'wbc',      to: 'model', strokeWidth: 4, color: '#16A34A' },
+      { from: 'pain',     to: 'model', strokeWidth: 3, color: '#16A34A' },
+      { from: 'district', to: 'model', strokeWidth: 1, color: '#94A3B8' },
+      { from: 'gender',   to: 'model', strokeWidth: 1, color: '#94A3B8' },
+      { from: 'insurance',to: 'model', strokeWidth: 1, color: '#94A3B8' },
+      { from: 'model',    to: 'output', strokeWidth: 3, color: '#2563EB' },
+    ],
+  },
+  biased: {
+    nodes: [
+      { id: 'hr',        label: 'Heart Rate (HR)',  type: 'clinical', weight: 'High',   justified: true },
+      { id: 'bp',        label: 'Blood Pressure',   type: 'clinical', weight: 'High',   justified: true },
+      { id: 'temp',      label: 'Temperature',      type: 'clinical', weight: 'Medium', justified: true },
+      { id: 'lactate',   label: 'Lactate',          type: 'clinical', weight: 'High',   justified: true },
+      { id: 'wbc',       label: 'WBC Count',        type: 'clinical', weight: 'Medium', justified: true },
+      { id: 'pain',      label: 'Pain Score',       type: 'clinical', weight: 'Medium', justified: true },
+      { id: 'district',  label: 'District Type',    type: 'demographic', weight: 'High',   justified: false, detail: 'district_type has High weight with no clinical justification — this is a learned proxy for documentation quality disparities in the training data.' },
+      { id: 'gender',    label: 'Gender',            type: 'demographic', weight: 'Medium', justified: false, detail: 'Gender has Medium weight — female identity reduces scores without clinical basis.' },
+      { id: 'insurance', label: 'Insurance Type',   type: 'demographic', weight: 'High',   justified: false, detail: 'insurance_type (PMJAY) has High weight — acts as a socioeconomic proxy, not a clinical variable.' },
+      { id: 'model',     label: 'Sepsis Risk Model', type: 'model' },
+      { id: 'output',    label: 'Risk Score',        type: 'output' },
+    ],
+    edges: [
+      { from: 'hr',       to: 'model', strokeWidth: 4, color: '#16A34A' },
+      { from: 'bp',       to: 'model', strokeWidth: 4, color: '#16A34A' },
+      { from: 'temp',     to: 'model', strokeWidth: 3, color: '#16A34A' },
+      { from: 'lactate',  to: 'model', strokeWidth: 4, color: '#16A34A' },
+      { from: 'wbc',      to: 'model', strokeWidth: 3, color: '#16A34A' },
+      { from: 'pain',     to: 'model', strokeWidth: 3, color: '#16A34A' },
+      { from: 'district', to: 'model', strokeWidth: 8, color: '#DC2626' },
+      { from: 'gender',   to: 'model', strokeWidth: 5, color: '#EA580C' },
+      { from: 'insurance',to: 'model', strokeWidth: 7, color: '#DC2626' },
+      { from: 'model',    to: 'output', strokeWidth: 3, color: '#2563EB' },
+    ],
+  },
+};
