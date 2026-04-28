@@ -12,11 +12,11 @@ const ROLES = [
     desc:    'Live chat with real-time bias audit — ask clinical questions, get immediate fairness analysis in your language.',
     features: [
       'Live chat with real-time bias audit',
-      'Translated clinical warnings (6 Indian languages)',
+      'Language Bias Probe — 6 Indian languages',
       'Text-to-speech alert playback',
     ],
     icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M8 2v4m8-4v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/>
         <path d="M12 14v4m-2-2h4"/>
       </svg>
@@ -36,7 +36,7 @@ const ROLES = [
       'Live chain-of-thought bias reasoning',
     ],
     icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ok)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ok)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
       </svg>
     ),
@@ -55,7 +55,7 @@ const ROLES = [
       'DISHA-aligned audit report export',
     ],
     icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--warn)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--warn)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
         <polyline points="14 2 14 8 20 8"/>
         <line x1="16" y1="13" x2="8" y2="13"/>
@@ -68,43 +68,61 @@ const ROLES = [
 
 export default function LandingPage() {
   const navigate = useNavigate();
+
   return (
     <>
       <Shell />
-      <div className="landing">
-        <div className="landing-kicker">Medical AI Bias Intelligence</div>
-        <h1 className="landing-title">
-          Medical AI Fairness,<br /><em>Made Visible</em>
-        </h1>
-        <p className="landing-sub">
-          PULSE detects, explains, and prescribes fixes for hidden demographic
-          harm in clinical AI systems — in your language.
-        </p>
+      <main id="main-content" role="main">
+        <div className="landing">
+          <p className="landing-kicker" aria-label="Medical AI Bias Intelligence platform">
+            Medical AI Bias Intelligence
+          </p>
+          <h1 className="landing-title">
+            Medical AI Fairness,<br /><em>Made Visible</em>
+          </h1>
+          <p className="landing-sub">
+            PULSE detects, explains, and prescribes fixes for hidden demographic
+            harm in clinical AI systems — in your language.
+          </p>
 
-        <div className="role-grid">
-          {ROLES.map(r => (
-            <div key={r.path} className="role-card fade-up" onClick={() => navigate(r.path)}>
-              <div
-                className="role-icon"
-                style={{ background: r.iconBg, border: `1px solid ${r.iconBdr}` }}
-              >
-                {r.icon}
-              </div>
-              <div>
-                <div className="role-label">{r.label}</div>
-                <div className="role-name">{r.name}</div>
-              </div>
-              <p className="role-desc">{r.desc}</p>
-              <ul className="role-features">
-                {r.features.map(f => <li key={f}>{f}</li>)}
-              </ul>
-              <div className="role-enter" style={{ color: r.accent }}>
-                Enter <span>→</span>
-              </div>
+          <nav
+            aria-label="Select your role to enter the platform"
+          >
+            <div className="role-grid">
+              {ROLES.map(r => (
+                <div
+                  key={r.path}
+                  className="role-card fade-up"
+                  onClick={() => navigate(r.path)}
+                  onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && navigate(r.path)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Enter ${r.name} — ${r.desc}`}
+                >
+                  <div
+                    className="role-icon"
+                    style={{ background: r.iconBg, border: `1px solid ${r.iconBdr}` }}
+                    aria-hidden="true"
+                  >
+                    {r.icon}
+                  </div>
+                  <div>
+                    <div className="role-label">{r.label}</div>
+                    <div className="role-name">{r.name}</div>
+                  </div>
+                  <p className="role-desc">{r.desc}</p>
+                  <ul className="role-features" aria-label={`Features of ${r.name}`}>
+                    {r.features.map(f => <li key={f}>{f}</li>)}
+                  </ul>
+                  <div className="role-enter" style={{ color: r.accent }} aria-hidden="true">
+                    Enter <span>→</span>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </nav>
         </div>
-      </div>
+      </main>
     </>
   );
 }

@@ -48,6 +48,8 @@ from routes.translate import router as translate_router
 from routes.report import router as report_router
 from routes.views import router as views_router
 from routes.chat import router as chat_router
+from routes.language_bias import router as language_bias_router
+from routes.doctor import router as doctor_router
 
 app.include_router(dataset_router)
 app.include_router(analyze_router)
@@ -55,6 +57,8 @@ app.include_router(translate_router)
 app.include_router(report_router)
 app.include_router(views_router)
 app.include_router(chat_router)
+app.include_router(language_bias_router)
+app.include_router(doctor_router)
 
 
 # ── Health check ─────────────────────────────────────────────────────────────

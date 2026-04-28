@@ -77,6 +77,28 @@ REPORT_PRECOMPUTED = {
                 ),
             },
             {
+                "title": "Population Vulnerability Summary",
+                "body": (
+                    "Rank 1 (Most Vulnerable): Remote Elderly Women (Age 60+, PMJAY) — "
+                    "Average risk score 38 vs 68 for equivalent urban male patients. "
+                    "30-point gap on identical clinical vitals. "
+                    "Clinical risk: Risk of missed sepsis diagnosis at critical intervention window. "
+                    "Represents approximately 12% of PMJAY patient base in affected districts. "
+                    "Recommended action: Mandatory human review for all matching patients immediately.\n\n"
+                    "Rank 2 (Highly Vulnerable): Rural Elderly Women (Age 60+, PMJAY) — "
+                    "Average risk score 42 vs 68 for equivalent urban male patients. "
+                    "26-point gap on identical clinical vitals. "
+                    "Clinical risk: Delayed escalation in district hospitals. "
+                    "Estimated 18% of rural PMJAY patient base. "
+                    "Recommended action: Flag for mandatory clinical review.\n\n"
+                    "Rank 3 (Vulnerable): Rural Female Patients (All ages, State Insurance) — "
+                    "Average risk score 44 vs 58 for fair model equivalent. "
+                    "14-point gap. "
+                    "Clinical risk: Systematic undertriage in secondary care. "
+                    "Recommended action: Monitor and audit quarterly until retraining is complete."
+                ),
+            },
+            {
                 "title": "Methodology",
                 "body": (
                     "PULSE combines three complementary bias detection approaches:\n\n"
@@ -91,6 +113,10 @@ REPORT_PRECOMPUTED = {
                     "Results were reviewed across three role-specific surfaces: clinician view, "
                     "model builder view, and governance/administrator view."
                 ),
+            },
+            {
+                "title": "PULSE Verdict",
+                "body": "PULSE VERDICT: SUSPEND CLINICAL USE",
             },
         ],
     },
@@ -130,11 +156,25 @@ REPORT_PRECOMPUTED = {
                 ),
             },
             {
+                "title": "Population Vulnerability Summary",
+                "body": (
+                    "No statistically significant vulnerable subgroup identified. "
+                    "All demographic cohorts receive clinically equivalent scores. "
+                    "Score variation across demographic groups (gender, age, district, insurance) "
+                    "remains within ±3 points — consistent with minor stochastic variation rather "
+                    "than systematic demographic weighting."
+                ),
+            },
+            {
                 "title": "Methodology",
                 "body": (
                     "Same methodology as above: intersectional metric analysis, counterfactual "
                     "testing, and PULSE Medical Bias Reasoner evaluation."
                 ),
+            },
+            {
+                "title": "PULSE Verdict",
+                "body": "PULSE VERDICT: CLEARED FOR DEPLOYMENT",
             },
         ],
     },

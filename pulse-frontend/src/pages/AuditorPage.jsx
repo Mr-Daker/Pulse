@@ -219,6 +219,7 @@ export default function AuditorPage() {
   return (
     <>
       <Shell />
+      <main id="main-content" role="main">
       <div className="page-wrap fade-up">
 
         {/* Models overview */}
@@ -316,6 +317,8 @@ export default function AuditorPage() {
               className="btn btn-primary"
               onClick={generate}
               disabled={genState === 'loading'}
+              aria-busy={genState === 'loading'}
+              aria-label={genState === 'loading' ? 'Generating audit report, please wait' : 'Generate governance audit report'}
             >
               {genState === 'loading' ? 'Generating…' : 'Generate Report'}
             </button>
@@ -324,6 +327,8 @@ export default function AuditorPage() {
                 className="btn btn-secondary"
                 onClick={exportPDF}
                 disabled={exporting}
+                aria-busy={exporting}
+                aria-label={exporting ? 'Exporting PDF, please wait' : 'Export audit report as PDF'}
               >
                 {exporting ? 'Exporting…' : 'Export PDF'}
               </button>
@@ -342,6 +347,7 @@ export default function AuditorPage() {
         </div>
 
       </div>
+      </main>
     </>
   );
 }

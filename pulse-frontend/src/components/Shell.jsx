@@ -19,37 +19,61 @@ export default function Shell({ children }) {
 
   return (
     <>
-      <div className="topbar">
-        <button className="logo btn-ghost" onClick={() => navigate('/')}>
-          <span className="logo-dot" />
-          <span style={{ fontFamily: 'var(--font-h)', fontWeight: 700, fontSize: 17, color: 'var(--t1)' }}>PULSE</span>
-        </button>
+      {/* Skip navigation for keyboard/screen reader users */}
+      <a href="#main-content" className="skip-nav">Skip to main content</a>
 
-        {!isLanding && (
-          <>
-            <span className="topbar-role">{roleLabel}</span>
-            <span className="topbar-spacer" />
-            <div className="model-toggle">
-              <button
-                className={`model-opt ${selectedModel === 'fair' ? 'active fair' : ''}`}
-                onClick={() => setSelectedModel('fair')}
+      <header role="banner">
+        <div className="topbar" role="navigation" aria-label="PULSE navigation">
+          <button
+            className="logo btn-ghost"
+            onClick={() => navigate('/')}
+            aria-label="PULSE — go to home page"
+          >
+            <span className="logo-dot" aria-hidden="true" />
+            <span style={{ fontFamily: 'var(--font-h)', fontWeight: 700, fontSize: 17, color: 'var(--t1)' }}>PULSE</span>
+          </button>
+
+          {!isLanding && (
+            <>
+              <span className="topbar-role" aria-current="page">{roleLabel}</span>
+              <span className="topbar-spacer" aria-hidden="true" />
+
+              <div
+                className="model-toggle"
+                role="group"
+                aria-label="Select model to audit"
               >
-                Model A — FairSepsis
-              </button>
+                <button
+                  className={`model-opt ${selectedModel === 'fair' ? 'active fair' : ''}`}
+                  onClick={() => setSelectedModel('fair')}
+                  aria-pressed={selectedModel === 'fair'}
+                  aria-label="Select Model A — FairSepsis v2"
+                >
+                  Model A — FairSepsis
+                </button>
+                <button
+                  className={`model-opt ${selectedModel === 'biased' ? 'active biased' : ''}`}
+                  onClick={() => setSelectedModel('biased')}
+                  aria-pressed={selectedModel === 'biased'}
+                  aria-label="Select Model B — SepsisScore v1 (Legacy)"
+                >
+                  Model B — SepsisScore
+                </button>
+              </div>
+
+              <Badge tone={m.tone}>{m.verdict}</Badge>
+
               <button
-                className={`model-opt ${selectedModel === 'biased' ? 'active biased' : ''}`}
-                onClick={() => setSelectedModel('biased')}
+                className="btn btn-secondary text-sm"
+                onClick={() => navigate('/')}
+                aria-label="Switch role — return to role selection"
               >
-                Model B — SepsisScore
+                Switch Role
               </button>
-            </div>
-            <Badge tone={m.tone}>{m.verdict}</Badge>
-            <button className="btn btn-secondary text-sm" onClick={() => navigate('/')}>
-              Switch Role
-            </button>
-          </>
-        )}
-      </div>
+            </>
+          )}
+        </div>
+      </header>
       {children}
     </>
   );

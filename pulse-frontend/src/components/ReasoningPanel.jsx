@@ -1,17 +1,16 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
-import { MODELS, API_URL } from '../data/demoData';
-import { Badge } from './Shell';
+import { MODELS } from '../data/demoData';
 
 export default function ReasoningPanel({ modelId }) {
-  const [state, setState]   = useState('idle');   // idle | running | done
-  const [text, setText]     = useState('');
-  const boxRef              = useRef(null);
-  const abortRef            = useRef(null);
-  const fullText            = MODELS[modelId].reasoning;
+  const [state, setState] = useState('idle'); // idle | running | done
+  const [text, setText]   = useState('');
+  const boxRef            = useRef(null);
+  const timerRef          = useRef(null);
+  const m = MODELS[modelId];
+  const fullText = m.reasoning;
 
-  // Reset when model changes
   useEffect(() => {
-    if (abortRef.current) abortRef.current.abort();
+    if (timerRef.current) clearTimeout(timerRef.current);
     setState('idle');
     setText('');
   }, [modelId]);
@@ -22,7 +21,7 @@ export default function ReasoningPanel({ modelId }) {
       if (i < str.length) {
         setText(str.slice(0, i + 1));
         i++;
-        setTimeout(tick, 16);
+        timerRef.current = setTimeout(tick, 12);
         if (boxRef.current) boxRef.current.scrollTop = boxRef.current.scrollHeight;
       } else {
         setState('done');
@@ -31,133 +30,58 @@ export default function ReasoningPanel({ modelId }) {
     tick();
   }, []);
 
-  const run = useCallback(async () => {
+  const run = useCallback(() => {
+    if (timerRef.current) clearTimeout(timerRef.current);
     setState('running');
     setText('');
-
-    // Try SSE streaming endpoint first
-    const controller = new AbortController();
-    abortRef.current = controller;
-
-    try {
-      const res = await fetch(`${API_URL}/api/analyze/reason/stream`, {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({
-          disparity_finding: modelId === 'biased'
-            ? '33-point disparity detected for P-0142 across demographic counterfactuals'
-            : 'No clinically unjustified disparity detected in counterfactual analysis',
-          model_id: modelId,
-        }),
-        signal: controller.signal,
-      });
-
-      if (res.ok && res.body) {
-        const reader = res.body.getReader();
-        const decoder = new TextDecoder();
-        let accumulated = '';
-        let buffer = '';
-
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-
-          buffer += decoder.decode(value, { stream: true });
-          const lines = buffer.split('\n');
-          buffer = lines.pop() || ''; // keep incomplete line in buffer
-
-          for (const line of lines) {
-            if (line.startsWith('data: ')) {
-              const data = line.slice(6).trim();
-              if (data === '[DONE]') {
-                setState('done');
-                return;
-              }
-              try {
-                const parsed = JSON.parse(data);
-                if (parsed.token) {
-                  accumulated += parsed.token;
-                  setText(accumulated);
-                  if (boxRef.current) boxRef.current.scrollTop = boxRef.current.scrollHeight;
-                }
-              } catch {
-                // skip malformed JSON
-              }
-            }
-          }
-        }
-        // If we get here without [DONE], mark as done
-        if (accumulated.length > 0) {
-          setState('done');
-          return;
-        }
-      }
-    } catch (err) {
-      if (err.name === 'AbortError') return;
-      // Fall through to non-streaming API
-    }
-
-    // Fallback: try non-streaming /reason endpoint
-    try {
-      const res = await fetch(`${API_URL}/api/analyze/reason`, {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({
-          disparity_finding: modelId === 'biased'
-            ? '33-point disparity detected for P-0142 across demographic counterfactuals'
-            : 'No clinically unjustified disparity detected in counterfactual analysis',
-          model_id: modelId,
-        }),
-      });
-      if (res.ok) {
-        const data = await res.json();
-        const liveText = data.reasoning
-          ? `Classification: ${data.classification}\n\n${data.reasoning}\n\nRecommendation:\n${data.recommendation}`
-          : fullText;
-        runTypewriter(liveText);
-        return;
-      }
-    } catch {
-      // fall through to demo
-    }
-
-    // Final fallback — animate pre-computed text
     runTypewriter(fullText);
-  }, [modelId, fullText, runTypewriter]);
-
-  const m = MODELS[modelId];
+  }, [fullText, runTypewriter]);
 
   return (
     <div>
+      {/* Pre-computed notice banner */}
+      <div
+        style={{
+          background: 'var(--warn-d)', border: '1px solid var(--warn-b)',
+          borderRadius: 6, padding: '8px 14px', marginBottom: 16,
+          fontSize: 12, color: 'var(--t2)',
+        }}
+        role="note"
+      >
+        <strong style={{ color: 'var(--warn)' }}>Pre-computed Analysis</strong> — These results are from a batch inference run on a 500-patient dataset, not a live streaming call. The typewriter animation reflects the actual chain-of-thought output produced during that analysis.
+      </div>
+
       <div className="flex-row mb-4" style={{ flexWrap: 'wrap', gap: 12 }}>
         <div style={{ flex: 1, minWidth: 200 }}>
-          <h3 style={{ marginBottom: 4 }}>Live AI Reasoning</h3>
+          <h3 style={{ marginBottom: 4 }}>AI Bias Reasoning</h3>
           <p style={{ fontSize: 13, margin: 0 }}>
-            Chain-of-thought bias analysis streamed from the PULSE Reasoner (Groq)
+            Step-by-step chain-of-thought bias audit — {m.pass ? 'Model A (FairSepsis v2)' : 'Model B (SepsisScore v1)'}
           </p>
         </div>
         <button
           className="btn btn-primary"
           onClick={run}
           disabled={state === 'running'}
+          aria-busy={state === 'running'}
+          aria-label={state === 'idle' ? 'Run bias reasoning animation' : state === 'running' ? 'Reasoning in progress' : 'Re-run reasoning animation'}
         >
-          {state === 'idle' ? 'Run Reasoning' : state === 'running' ? 'Streaming…' : 'Re-run'}
+          {state === 'idle' ? 'Run Reasoning' : state === 'running' ? 'Running…' : 'Re-run'}
         </button>
       </div>
 
       {state === 'idle' ? (
         <div className="rsn-box rsn-empty">
-          Click &ldquo;Run Reasoning&rdquo; to stream the AI audit chain-of-thought
+          Click &ldquo;Run Reasoning&rdquo; to animate the chain-of-thought bias audit
         </div>
       ) : (
-        <div className="rsn-box" ref={boxRef}>
+        <div className="rsn-box" ref={boxRef} aria-live="polite" aria-label="Reasoning output">
           {text}
-          {state === 'running' && <span className="rsn-cursor" />}
+          {state === 'running' && <span className="rsn-cursor" aria-hidden="true" />}
         </div>
       )}
 
       {state === 'done' && (
-        <div className={`alert ${m.pass ? 'alert-ok' : 'alert-err'} mt-4`}>
+        <div className={`alert ${m.pass ? 'alert-ok' : 'alert-err'} mt-4`} role="status">
           <strong>
             {m.pass
               ? 'NO CLINICALLY UNJUSTIFIED DISPARITY'
@@ -166,7 +90,7 @@ export default function ReasoningPanel({ modelId }) {
           <p>
             {m.pass
               ? 'Model A is cleared for clinical decision-support use. Continue routine monitoring.'
-              : 'Model B must not be used as a primary decision tool for remote elderly female patients. Immediate human review required.'}
+              : 'Model B must not be used as a primary decision tool for remote elderly female PMJAY patients. Immediate mandatory human review required.'}
           </p>
         </div>
       )}
