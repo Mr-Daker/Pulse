@@ -1,62 +1,129 @@
-# PULSE — Medical AI Bias Audit Platform
+# PULSE
 
-PULSE (Platform for Unified Learning and Safety Evaluation) detects, explains, and prescribes fixes for hidden demographic harm in clinical AI systems. Built for the Google Solution Challenge, PULSE audits sepsis risk scoring models for bias against vulnerable populations in Indian healthcare — specifically remote elderly women, PMJAY patients, and rural communities.
+PULSE is a Medical AI Bias Audit Platform for sepsis-risk model review. It helps clinicians, ML builders, and auditors inspect demographic fairness, counterfactual behavior, language bias, temporal drift, and governance reports for healthcare AI workflows.
 
-## Live Demo
+## Live Deployment
 
-> **Frontend:** [https://pulse-demo.vercel.app](https://pulse-demo.vercel.app)
-> **Backend API:** Deployed on Railway / Google Cloud Run
+Frontend deployment target:
 
-## How to Run Locally
+- Live URL: `https://pulse-frontend-wheat.vercel.app`
+- Vercel project root: `pulse-frontend`
+- Framework preset: `Vite`
+- Build command: `npm run build`
+- Output directory: `dist`
+- Required environment variable: `VITE_API_URL`
 
-### Frontend (React + Vite)
+Backend deployment target:
+
+- FastAPI app root: `pulse-backend`
+- Start command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+- Required environment variable: `GROQ_API_KEY`
+
+The frontend can be deployed on Vercel for free on the Hobby plan for personal/demo usage. The backend should run on a Python-capable serverless/container host such as Cloud Run, Railway, Render, or Firebase Cloud Functions/Cloud Run.
+
+## Firebase Backend Notes
+
+This repo currently contains a Python FastAPI backend, not a Firebase-native Functions project. Firebase backend deployment is possible, but it is not a zero-config deploy:
+
+- Firebase Hosting is a good fit for static frontend hosting.
+- Firebase Cloud Functions or Cloud Run can host backend logic, but this normally requires the Firebase Blaze plan with a billing account.
+- Blaze includes no-cost monthly quotas for Cloud Functions, but usage beyond those quotas can be billed.
+- The current FastAPI backend can be deployed more directly to Cloud Run, Railway, or Render without rewriting routes.
+
+For the fastest demo path, deploy `pulse-frontend` to Vercel and deploy `pulse-backend` to a Python backend host, then set `VITE_API_URL` in Vercel to the backend URL.
+
+## Local Setup
+
+### Backend
+
+```bash
+cd pulse-backend
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+copy .env.example .env
+uvicorn main:app --reload --port 8000
+```
+
+Backend docs open at:
+
+```text
+http://localhost:8000/docs
+```
+
+### Frontend
 
 ```bash
 cd pulse-frontend
 npm install
+copy .env.example .env
 npm run dev
 ```
 
-The frontend runs at `http://localhost:5173` by default.
+Frontend opens at:
 
-### Backend (FastAPI + Groq)
-
-```bash
-cd pulse-backend
-pip install -r requirements.txt
-uvicorn main:app --reload --port 8000
+```text
+http://localhost:5173
 ```
 
-The backend runs at `http://localhost:8000`.
+## Environment Variables
 
-### Environment Variables
+| Variable | App | Description |
+| --- | --- | --- |
+| `GROQ_API_KEY` | Backend | Groq API key for live reasoning, chat, translation, and report generation |
+| `GROQ_API_KEY_2` | Backend | Optional secondary Groq key for language-bias features |
+| `VITE_API_URL` | Frontend | Public URL of the deployed backend, with no trailing slash |
 
-| Variable | Location | Description |
-|---|---|---|
-| `GROQ_API_KEY` | Backend `.env` | Groq API key for LLM calls (reasoning, chat, translation) |
-| `VITE_API_URL` | Frontend `.env` | Full URL of deployed backend (e.g. `http://localhost:8000`), no trailing slash |
+Example frontend production value:
 
-Copy `.env.example` to `.env` in both `pulse-frontend/` and `pulse-backend/` directories and fill in the values.
+```text
+VITE_API_URL=https://your-backend-url.example.com
+```
 
 ## Project Structure
 
+```text
+pulse-frontend/   React + Vite frontend for Vercel
+pulse-backend/    FastAPI backend with Groq integration
+DOC/              Planning and implementation documents
 ```
-pulse-frontend/     → React/Vite frontend (deploy to Vercel)
-pulse-backend/      → FastAPI backend (deploy to Railway/Cloud Run)
+
+## Core Features
+
+- Role-specific flows for doctors, builders, and auditors
+- Bias metrics and demographic subgroup analysis
+- Counterfactual model comparison
+- Causal graph visualization
+- Doctor chat audit flow with language-bias detection
+- Multilingual bias alerts and translation support
+- Governance report generation
+- Temporal drift monitoring
+
+## Deploy Frontend To Vercel
+
+From the Vercel dashboard:
+
+1. Import the GitHub repository.
+2. Set the project root directory to `pulse-frontend`.
+3. Use the Vite framework preset.
+4. Add `VITE_API_URL` in Project Settings -> Environment Variables.
+5. Deploy.
+
+From the CLI:
+
+```bash
+cd pulse-frontend
+npx vercel
+npx vercel --prod
 ```
 
-## Features
+## Deploy Backend
 
-- **Three Role-Specific Views:** Clinician (Doctor), ML Engineer (Builder), Administrator (Auditor)
-- **Live Chat Bias Audit:** Doctors chat with the AI, PULSE audits every response for demographic bias in real time
-- **Counterfactual Analysis:** Gender, Age, and Income as three independent demographic axes
-- **Interactive Causal Graph:** React Flow-based visualization of model decision pathways
-- **Multilingual Support:** Bias alerts in English, Tamil, Hindi, Telugu, Bengali, and Kannada
-- **Governance Reports:** PDF-exportable audit reports with vulnerability summary
-- **Temporal Drift Monitoring:** Track fairness score degradation over time
+The backend is a FastAPI application. For most hosts, use:
 
-## Tech Stack
+```bash
+pip install -r requirements.txt
+uvicorn main:app --host 0.0.0.0 --port $PORT
+```
 
-- **Frontend:** React 18, Vite, React Router, React Flow, jsPDF
-- **Backend:** FastAPI, Groq API (Gemma 2 9B), Python
-- **Deployment:** Vercel (frontend), Railway/Cloud Run (backend)
+Set `GROQ_API_KEY` in the backend host environment. After deployment, update the Vercel frontend environment variable `VITE_API_URL` to point at the backend URL.
