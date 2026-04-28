@@ -3,11 +3,11 @@ import { MODELS } from '../data/demoData';
 
 export default function ReasoningPanel({ modelId }) {
   const [state, setState] = useState('idle'); // idle | running | done
-  const [text, setText]   = useState('');
+  const [text,  setText]  = useState('');
   const boxRef            = useRef(null);
   const timerRef          = useRef(null);
-  const m = MODELS[modelId];
-  const fullText = m.reasoning;
+  const m                 = MODELS[modelId];
+  const fullText          = m.reasoning;
 
   useEffect(() => {
     if (timerRef.current) clearTimeout(timerRef.current);
@@ -39,23 +39,33 @@ export default function ReasoningPanel({ modelId }) {
 
   return (
     <div>
-      {/* Pre-computed notice banner */}
+      {/* Pre-computed notice */}
       <div
         style={{
-          background: 'var(--warn-d)', border: '1px solid var(--warn-b)',
-          borderRadius: 6, padding: '8px 14px', marginBottom: 16,
-          fontSize: 12, color: 'var(--t2)',
+          background: 'rgba(255,251,235,0.8)',
+          border: '1px solid var(--warn-b)',
+          borderLeft: '3px solid var(--warn)',
+          borderRadius: 8, padding: '10px 16px',
+          marginBottom: 16, fontSize: 12, color: 'var(--t2)',
+          display: 'flex', gap: 10, alignItems: 'flex-start',
         }}
         role="note"
       >
-        <strong style={{ color: 'var(--warn)' }}>Pre-computed Analysis</strong> — These results are from a batch inference run on a 500-patient dataset, not a live streaming call. The typewriter animation reflects the actual chain-of-thought output produced during that analysis.
+        <span style={{ color: 'var(--warn)', fontWeight: 700, flexShrink: 0 }}>Note</span>
+        <span>
+          <strong style={{ color: 'var(--warn)', fontWeight: 700 }}>Pre-computed Analysis</strong>{' '}
+          — These results are from a batch inference run on a 500-patient dataset, not a live
+          streaming call. The typewriter animation reflects the actual chain-of-thought output
+          produced during that analysis.
+        </span>
       </div>
 
       <div className="flex-row mb-4" style={{ flexWrap: 'wrap', gap: 12 }}>
         <div style={{ flex: 1, minWidth: 200 }}>
           <h3 style={{ marginBottom: 4 }}>AI Bias Reasoning</h3>
           <p style={{ fontSize: 13, margin: 0 }}>
-            Step-by-step chain-of-thought bias audit — {m.pass ? 'Model A (FairSepsis v2)' : 'Model B (SepsisScore v1)'}
+            Step-by-step chain-of-thought bias audit —{' '}
+            {m.pass ? 'Model A (FairSepsis v2)' : 'Model B (SepsisScore v1)'}
           </p>
         </div>
         <button
@@ -63,7 +73,11 @@ export default function ReasoningPanel({ modelId }) {
           onClick={run}
           disabled={state === 'running'}
           aria-busy={state === 'running'}
-          aria-label={state === 'idle' ? 'Run bias reasoning animation' : state === 'running' ? 'Reasoning in progress' : 'Re-run reasoning animation'}
+          aria-label={
+            state === 'idle'    ? 'Run bias reasoning animation' :
+            state === 'running' ? 'Reasoning in progress' :
+                                  'Re-run reasoning animation'
+          }
         >
           {state === 'idle' ? 'Run Reasoning' : state === 'running' ? 'Running…' : 'Re-run'}
         </button>
@@ -74,14 +88,22 @@ export default function ReasoningPanel({ modelId }) {
           Click &ldquo;Run Reasoning&rdquo; to animate the chain-of-thought bias audit
         </div>
       ) : (
-        <div className="rsn-box" ref={boxRef} aria-live="polite" aria-label="Reasoning output">
+        <div
+          className="rsn-box"
+          ref={boxRef}
+          aria-live="polite"
+          aria-label="Reasoning output"
+        >
           {text}
           {state === 'running' && <span className="rsn-cursor" aria-hidden="true" />}
         </div>
       )}
 
       {state === 'done' && (
-        <div className={`alert ${m.pass ? 'alert-ok' : 'alert-err'} mt-4`} role="status">
+        <div
+          className={`alert ${m.pass ? 'alert-ok' : 'alert-err'} mt-4`}
+          role="status"
+        >
           <strong>
             {m.pass
               ? 'NO CLINICALLY UNJUSTIFIED DISPARITY'

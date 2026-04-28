@@ -1,28 +1,26 @@
 import { PATIENTS, getIncomeTier } from '../data/demoData';
 
-// Normalise a backend patientRow ({ id, age, gender, districtType, insurance, scores, flagged })
-// or a demo row ({ id, age, gender, district, ins, fair, biased, flag }) into a common shape.
 function normalise(row) {
   if (row.scores) {
-    // backend format
     return {
-      id:       row.id,
-      age:      row.age,
-      gender:   row.gender,
-      district: row.districtType,
-      ins:      row.insurance,
+      id:         row.id,
+      age:        row.age,
+      gender:     row.gender,
+      district:   row.districtType,
+      ins:        row.insurance,
       incomeTier: row.income_tier || getIncomeTier(row.insurance),
-      fair:     row.scores.fair,
-      biased:   row.scores.biased,
-      flag:     row.flagged,
+      fair:       row.scores.fair,
+      biased:     row.scores.biased,
+      flag:       row.flagged,
     };
   }
-  // demo format
-  return {
-    ...row,
-    incomeTier: getIncomeTier(row.ins),
-  };
+  return { ...row, incomeTier: getIncomeTier(row.ins) };
 }
+
+const TIER_COLOR = {
+  'Low Income':    'var(--err)',
+  'Middle Income': 'var(--warn)',
+};
 
 export default function PatientTable({ modelId, rows }) {
   const displayRows = rows ? rows.map(normalise) : PATIENTS.map(normalise);
@@ -37,7 +35,10 @@ export default function PatientTable({ modelId, rows }) {
             <th>Gender</th>
             <th>District</th>
             <th>Insurance</th>
-            <th title="Income tier derived from insurance scheme — PMJAY is the government scheme for low-income households." style={{ cursor: 'help' }}>
+            <th
+              title="Income tier derived from insurance scheme — PMJAY is the government scheme for low-income households."
+              style={{ cursor: 'help' }}
+            >
               Income Tier ⓘ
             </th>
             <th>Model A</th>
@@ -52,36 +53,52 @@ export default function PatientTable({ modelId, rows }) {
             return (
               <tr key={p.id}>
                 <td>
-                  <span className="font-mono text-xs" style={{ color: 'var(--t2)' }}>{p.id}</span>
+                  <span className="font-mono text-xs" style={{ color: 'var(--t3)' }}>{p.id}</span>
                 </td>
                 <td>{p.age}</td>
                 <td>{p.gender}</td>
                 <td>{p.district}</td>
-                <td>{p.ins}</td>
+                <td style={{ color: 'var(--t2)' }}>{p.ins}</td>
                 <td>
                   <span style={{
-                    fontSize: 12,
-                    fontWeight: 600,
-                    color: p.incomeTier === 'Low Income' ? 'var(--err)' : p.incomeTier === 'Middle Income' ? 'var(--warn)' : 'var(--ok)',
+                    fontSize: 12, fontWeight: 600,
+                    color: TIER_COLOR[p.incomeTier] || 'var(--ok)',
                   }}>
                     {p.incomeTier}
                   </span>
                 </td>
                 <td>
-                  <span className="font-mono" style={{ color: 'var(--ok)', fontWeight: 600 }}>{p.fair}</span>
+                  <span className="font-mono" style={{ color: 'var(--ok)', fontWeight: 600 }}>
+                    {p.fair}
+                  </span>
                 </td>
                 <td>
-                  <span className="font-mono" style={{ color: p.biased < 50 ? 'var(--err)' : 'var(--t1)', fontWeight: 600 }}>
+                  <span
+                    className="font-mono"
+                    style={{ color: p.biased < 50 ? 'var(--err)' : 'var(--t1)', fontWeight: 600 }}
+                  >
                     {p.biased}
                   </span>
                 </td>
                 <td>
-                  <span className="font-mono text-xs" style={{ color: diff < -10 ? 'var(--err)' : diff > 5 ? 'var(--ok)' : 'var(--t2)' }}>
+                  <span
+                    className="font-mono text-xs"
+                    style={{
+                      color: diff < -10 ? 'var(--err)' : diff > 5 ? 'var(--ok)' : 'var(--t2)',
+                      fontWeight: Math.abs(diff) > 10 ? 700 : 400,
+                    }}
+                  >
                     {diff > 0 ? '+' : ''}{diff}
                   </span>
                 </td>
                 <td>
-                  {p.flag && <span className="pt-flag" title="Bias flagged — significant demographic disparity" />}
+                  {p.flag && (
+                    <span
+                      className="pt-flag"
+                      title="Bias flagged — significant demographic disparity"
+                      aria-label="Bias flagged"
+                    />
+                  )}
                 </td>
               </tr>
             );

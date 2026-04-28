@@ -74,22 +74,23 @@ export default function LandingPage() {
       <Shell />
       <main id="main-content" role="main">
         <div className="landing">
+
           <p className="landing-kicker" aria-label="Medical AI Bias Intelligence platform">
             Medical AI Bias Intelligence
           </p>
+
           <h1 className="landing-title">
             Medical AI Fairness,<br /><em>Made Visible</em>
           </h1>
+
           <p className="landing-sub">
             PULSE detects, explains, and prescribes fixes for hidden demographic
             harm in clinical AI systems — in your language.
           </p>
 
-          <nav
-            aria-label="Select your role to enter the platform"
-          >
+          <nav aria-label="Select your role to enter the platform">
             <div className="role-grid">
-              {ROLES.map(r => (
+              {ROLES.map((r, i) => (
                 <div
                   key={r.path}
                   className="role-card fade-up"
@@ -98,6 +99,7 @@ export default function LandingPage() {
                   role="button"
                   tabIndex={0}
                   aria-label={`Enter ${r.name} — ${r.desc}`}
+                  style={{ animationDelay: `${i * 0.07}s` }}
                 >
                   <div
                     className="role-icon"
@@ -106,14 +108,18 @@ export default function LandingPage() {
                   >
                     {r.icon}
                   </div>
+
                   <div>
                     <div className="role-label">{r.label}</div>
                     <div className="role-name">{r.name}</div>
                   </div>
+
                   <p className="role-desc">{r.desc}</p>
+
                   <ul className="role-features" aria-label={`Features of ${r.name}`}>
                     {r.features.map(f => <li key={f}>{f}</li>)}
                   </ul>
+
                   <div className="role-enter" style={{ color: r.accent }} aria-hidden="true">
                     Enter <span>→</span>
                   </div>
@@ -121,6 +127,7 @@ export default function LandingPage() {
               ))}
             </div>
           </nav>
+
         </div>
       </main>
     </>

@@ -164,16 +164,16 @@ const EXAMPLE_CASES = EXAMPLES.map(example => {
 });
 
 function getExampleTitle(exampleId) {
-  if (exampleId === 'ex1') return 'English remote case';
+  if (exampleId === 'ex1') return 'English Remote case';
   if (exampleId === 'ex2') return 'Tamil rural PMJAY case';
   if (exampleId === 'ex3') return 'Hindi urban reference case';
   return 'Example case';
 }
 
 function getExampleSubtitle(exampleId) {
-  if (exampleId === 'ex1') return 'Remote Tamil Nadu, elderly female patient';
-  if (exampleId === 'ex2') return 'Tamil-language rural sepsis presentation';
-  if (exampleId === 'ex3') return 'Advantaged reference cohort scenario';
+  if (exampleId === 'ex1') return 'Elderly female Patient';
+  if (exampleId === 'ex2') return 'Tamil-language sepsis presentation';
+  if (exampleId === 'ex3') return 'Advantaged reference scenario';
   return 'Preloaded multilingual demo';
 }
 
@@ -494,8 +494,8 @@ export default function DoctorPage() {
                       aria-pressed={active}
                       style={{
                         minWidth: 0,
-                        width: 196,
-                        flex: '0 1 196px',
+                        width: 206,
+                        flex: '0 1 240px',
                         justifyContent: 'flex-start',
                         padding: '11px 13px',
                         borderColor: active ? 'var(--acc)' : 'var(--brd)',

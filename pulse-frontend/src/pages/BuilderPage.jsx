@@ -8,11 +8,11 @@ import ReasoningPanel from '../components/ReasoningPanel';
 import CausalGraph from '../components/CausalGraph';
 
 const TABS = [
-  ['metrics',        'Metrics & Heatmap'],
-  ['counterfactuals','Counterfactuals'],
-  ['patients',       'Patient Table'],
-  ['reasoning',      'Live Reasoning'],
-  ['causal',         'Causal Graph'],
+  ['metrics',         'Metrics & Heatmap'],
+  ['counterfactuals', 'Counterfactuals'],
+  ['patients',        'Patient Table'],
+  ['reasoning',       'Live Reasoning'],
+  ['causal',          'Causal Graph'],
 ];
 
 export default function BuilderPage() {
@@ -83,6 +83,8 @@ export default function BuilderPage() {
       <Shell />
       <main id="main-content" role="main">
         <div className="page-wrap fade-up">
+
+          {/* Bias alert banner */}
           {m.tone === 'err' && (
             <div className="bias-banner" role="alert" aria-live="assertive">
               <strong>Bias Detected</strong>
@@ -90,6 +92,7 @@ export default function BuilderPage() {
             </div>
           )}
 
+          {/* ── Pill tabs ─────────────────────────────────────────────── */}
           <div className="tabs" role="tablist" aria-label="Builder analysis sections">
             {TABS.map(([key, label]) => (
               <button
@@ -106,7 +109,7 @@ export default function BuilderPage() {
             ))}
           </div>
 
-          {/* ── Metrics ──────────────────────────────────────────────────── */}
+          {/* ── Metrics ──────────────────────────────────────────────── */}
           <div
             id="builder-panel-metrics"
             role="tabpanel"
@@ -144,7 +147,7 @@ export default function BuilderPage() {
             </div>
           </div>
 
-          {/* ── Counterfactuals ──────────────────────────────────────────── */}
+          {/* ── Counterfactuals ──────────────────────────────────────── */}
           <div
             id="builder-panel-counterfactuals"
             role="tabpanel"
@@ -175,6 +178,7 @@ export default function BuilderPage() {
                 </div>
               </div>
 
+              {/* Reference vitals card */}
               <div className="card-sm mb-6">
                 <p style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '.5px', color: 'var(--t3)', marginBottom: 12 }}>
                   Reference patient vitals (identical across all variants)
@@ -208,7 +212,7 @@ export default function BuilderPage() {
             </div>
           </div>
 
-          {/* ── Patients ─────────────────────────────────────────────────── */}
+          {/* ── Patients ─────────────────────────────────────────────── */}
           <div
             id="builder-panel-patients"
             role="tabpanel"
@@ -231,7 +235,7 @@ export default function BuilderPage() {
             </div>
           </div>
 
-          {/* ── Reasoning ────────────────────────────────────────────────── */}
+          {/* ── Reasoning ────────────────────────────────────────────── */}
           <div
             id="builder-panel-reasoning"
             role="tabpanel"
@@ -258,7 +262,7 @@ export default function BuilderPage() {
             </div>
           </div>
 
-          {/* ── Causal Graph ──────────────────────────────────────────────── */}
+          {/* ── Causal Graph ──────────────────────────────────────────── */}
           <div
             id="builder-panel-causal"
             role="tabpanel"

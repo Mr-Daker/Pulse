@@ -2,20 +2,23 @@ import { QUARTERS } from '../data/demoData';
 
 /* ── HeatCell ────────────────────────────────────────────────────────────── */
 function HeatCell({ value }) {
-  // Light-theme heatmap: low scores = red tint, high scores = green tint
   const pct = Math.max(0, Math.min(1, (value - 30) / (75 - 30)));
   let bg, col;
   if (pct < 0.4) {
-    bg = `hsl(0, 70%, ${92 - pct * 15}%)`;
+    bg = `hsl(0,70%,${92 - pct * 15}%)`;
     col = '#DC2626';
   } else if (pct < 0.7) {
-    bg = `hsl(40, 70%, ${92 - pct * 10}%)`;
+    bg = `hsl(40,70%,${92 - pct * 10}%)`;
     col = '#D97706';
   } else {
-    bg = `hsl(140, 50%, ${90 - pct * 10}%)`;
+    bg = `hsl(140,50%,${90 - pct * 10}%)`;
     col = '#16A34A';
   }
-  return <td className="hm-cell" style={{ background: bg, color: col }}>{value}</td>;
+  return (
+    <td className="hm-cell" style={{ background: bg, color: col }}>
+      {value}
+    </td>
+  );
 }
 
 /* ── Heatmap ─────────────────────────────────────────────────────────────── */
@@ -109,19 +112,22 @@ export function CounterfactualCards({ cf, modelId }) {
 
   return (
     <div className="cf-grid">
+      {/* Original */}
       <div className="cf-card cf-orig">
         <div className="cf-tag">Original Patient</div>
         <div className="cf-ring" style={{
           background:  isBiased ? 'var(--err-d)' : 'var(--ok-d)',
           borderColor: isBiased ? 'var(--err-b)' : 'var(--ok-b)',
           color:       isBiased ? 'var(--err)'   : 'var(--ok)',
-        }}>{orig.score}</div>
+        }}>
+          {orig.score}
+        </div>
         <div className="cf-delta" style={{ color: 'var(--t2)' }}>Baseline</div>
         <div className="cf-profile">{orig.profile}</div>
       </div>
 
       {cf.variants.map((v, i) => {
-        const delta     = parseInt(v.delta);
+        const delta      = parseInt(v.delta);
         const deltaColor = isBiased && delta > 0 ? 'var(--err)' : delta > 0 ? 'var(--ok)' : 'var(--t2)';
         return (
           <div className="cf-card" key={i}>
@@ -151,11 +157,11 @@ export function DriftChart({ data, modelId }) {
   }));
 
   const path = pts.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
-  const fill = path + ` L${pts[pts.length - 1].x.toFixed(1)},${H - pad.b} L${pts[0].x.toFixed(1)},${H - pad.b} Z`;
+  const fill = path + ` L${pts[pts.length-1].x.toFixed(1)},${H-pad.b} L${pts[0].x.toFixed(1)},${H-pad.b} Z`;
 
   const isBiased = modelId === 'biased';
   const stroke   = isBiased ? '#DC2626' : '#16A34A';
-  const fillCol  = isBiased ? 'rgba(220,38,38,0.08)' : 'rgba(22,163,74,0.08)';
+  const fillCol  = isBiased ? 'rgba(220,38,38,0.07)' : 'rgba(22,163,74,0.07)';
 
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className="drift-svg" preserveAspectRatio="none">
@@ -165,7 +171,7 @@ export function DriftChart({ data, modelId }) {
         <circle key={i} cx={p.x} cy={p.y} r="3.5" fill={stroke} />
       ))}
       {pts.map((p, i) => (
-        <text key={i} x={p.x} y={H - 4} fontSize="9" fill="#94A3B8" textAnchor="middle">
+        <text key={i} x={p.x} y={H-4} fontSize="9" fill="#94A3B8" textAnchor="middle">
           {QUARTERS[i]}
         </text>
       ))}

@@ -3,41 +3,63 @@ import { useApp } from '../context/AppContext';
 import { MODELS } from '../data/demoData';
 
 function Badge({ tone, children }) {
-  const cls = tone === 'err' ? 'badge-err' : tone === 'ok' ? 'badge-ok' : tone === 'warn' ? 'badge-warn' : 'badge-neu';
+  const cls =
+    tone === 'err'  ? 'badge-err'  :
+    tone === 'ok'   ? 'badge-ok'   :
+    tone === 'warn' ? 'badge-warn' : 'badge-neu';
   return <span className={`badge ${cls}`}>{children}</span>;
 }
 
-const ROLE_LABELS = { '/doctor': 'Live Bias Probe', '/builder': 'ML Builder', '/auditor': 'Auditor' };
+const ROLE_LABELS = {
+  '/doctor':  'Live Bias Probe',
+  '/builder': 'ML Builder',
+  '/auditor': 'Auditor',
+};
 
 export default function Shell({ children }) {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const navigate  = useNavigate();
+  const location  = useLocation();
   const { selectedModel, setSelectedModel } = useApp();
-  const m = MODELS[selectedModel];
+  const m         = MODELS[selectedModel];
   const isLanding = location.pathname === '/';
   const roleLabel = ROLE_LABELS[location.pathname] || '';
 
   return (
     <>
-      {/* Skip navigation for keyboard/screen reader users */}
+      {/* Skip link for keyboard/screen-reader users */}
       <a href="#main-content" className="skip-nav">Skip to main content</a>
 
       <header role="banner">
-        <div className="topbar" role="navigation" aria-label="PULSE navigation">
+        <div
+          className="topbar"
+          role="navigation"
+          aria-label="PULSE navigation"
+        >
+          {/* Logo */}
           <button
             className="logo btn-ghost"
             onClick={() => navigate('/')}
             aria-label="PULSE — go to home page"
           >
             <span className="logo-dot" aria-hidden="true" />
-            <span style={{ fontFamily: 'var(--font-h)', fontWeight: 700, fontSize: 17, color: 'var(--t1)' }}>PULSE</span>
+            <span style={{
+              fontFamily: 'var(--font-h)', fontWeight: 700,
+              fontSize: 17, color: 'var(--t1)', letterSpacing: '-0.02em',
+            }}>
+              PULSE
+            </span>
           </button>
 
           {!isLanding && (
             <>
-              <span className="topbar-role" aria-current="page">{roleLabel}</span>
+              {/* Current section pill */}
+              <span className="topbar-role" aria-current="page">
+                {roleLabel}
+              </span>
+
               <span className="topbar-spacer" aria-hidden="true" />
 
+              {/* Model toggle */}
               <div
                 className="model-toggle"
                 role="group"
@@ -61,12 +83,15 @@ export default function Shell({ children }) {
                 </button>
               </div>
 
+              {/* Verdict badge */}
               <Badge tone={m.tone}>{m.verdict}</Badge>
 
+              {/* Switch role */}
               <button
                 className="btn btn-secondary text-sm"
                 onClick={() => navigate('/')}
                 aria-label="Switch role — return to role selection"
+                style={{ flexShrink: 0 }}
               >
                 Switch Role
               </button>
@@ -74,6 +99,7 @@ export default function Shell({ children }) {
           )}
         </div>
       </header>
+
       {children}
     </>
   );
