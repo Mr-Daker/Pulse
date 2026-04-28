@@ -8,12 +8,11 @@ Run:  uvicorn main:app --reload --port 8000
 
 import os
 
-from a2wsgi import ASGIMiddleware
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.testclient import TestClient
 from firebase_functions import https_fn
-from werkzeug.wrappers import Response
 
 # Load environment variables from .env
 load_dotenv()
@@ -82,9 +81,28 @@ async def health():
 
 # Firebase Cloud Functions HTTPS entrypoint.
 # Local development still uses `uvicorn main:app`.
-firebase_wsgi_app = ASGIMiddleware(app)
+firebase_client = TestClient(app)
+
+
+def _firebase_path(path: str) -> str:
+    if path in ("", "/", "/api"):
+        return "/"
+    if path == "/health" or path.startswith("/api/"):
+        return path
+    return f"/api{path}"
 
 
 @https_fn.on_request(region="asia-south1", timeout_sec=300, secrets=["GROQ_API_KEY", "GROQ_API_KEY_2"])
 def api(req: https_fn.Request) -> https_fn.Response:
-    return Response.from_app(firebase_wsgi_app, req.environ)
+    response = firebase_client.request(
+        req.method,
+        _firebase_path(req.path),
+        params=list(req.args.items(multi=True)),
+        headers={key: value for key, value in req.headers.items() if key.lower() != "host"},
+        content=req.get_data(),
+    )
+    return https_fn.Response(
+        response.content,
+        status=response.status_code,
+        headers=dict(response.headers),
+    )
